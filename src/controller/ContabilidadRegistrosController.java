@@ -13,11 +13,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import model.cliente;
 
 public class ContabilidadRegistrosController implements Initializable {
     @FXML
@@ -43,7 +47,10 @@ public class ContabilidadRegistrosController implements Initializable {
     private TextField TxDocIde1;
 
     @FXML
-    private Button txBuscar5;
+    private Button ButtonLimpiarCliente;
+
+    @FXML
+    private Button ButtonGuardar4;
 
     @FXML
     private Button txBuscar4;
@@ -52,11 +59,9 @@ public class ContabilidadRegistrosController implements Initializable {
     private Button txBuscar6;
 
     @FXML
-    private Button txBuscar7;
+    private Button ButtonModificar3;
 
-    @FXML
-    private Button txBuscar8;
-
+   
     @FXML
     private Button btGuardar5;
 
@@ -229,7 +234,187 @@ public class ContabilidadRegistrosController implements Initializable {
     @FXML
     private ToggleButton tgButtonCotizacion;
 
+    @FXML
+    private Button ButtonImprimir3;
 
+    @FXML
+    private Button ButtonRetirar3;
+
+
+    @FXML
+    void guardarCliente(ActionEvent event) {
+
+           String nomCliente = "'" + TxNombresCliente1.getText() + "'";
+           String docCliente = "'" + TxNumIdentidad1.getText() + "'";
+           String emailCliente = "'" + TxEmail.getText() + "'";
+           String telDosClie  = "'" + txTelCliente2.getText() + "'";
+           String telUnoClie = "'" + txTelCliente1.getText() + "'";
+           String wtCliente = "'" + txWhatSapp.getText() + "'";
+           String refCliente = "'" + ChMedio.getValue() + "'";
+           
+                   
+
+           cliente ingCliente = new cliente (nomCliente,docCliente,emailCliente,telDosClie,telUnoClie,wtCliente,refCliente );
+            
+           ingCliente.cargaCliente(); 
+
+            Alert dialogoAlerta = new Alert(AlertType.CONFIRMATION);
+            dialogoAlerta.setTitle("CREACIÓN DE CLIENTE");
+            dialogoAlerta.setHeaderText("Desea crear el nuevo cliente?");           
+            dialogoAlerta.initStyle(StageStyle.UTILITY);
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            dialogoAlerta.showAndWait();
+
+            Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+            dialogoAlerta1.setTitle("CREACIÓN DE CLIENTE");
+            dialogoAlerta1.setHeaderText("Operacion exitosa");           
+            dialogoAlerta1.initStyle(StageStyle.UTILITY);
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            dialogoAlerta1.showAndWait();
+           
+            TxNombresCliente1.clear();
+            TxNumIdentidad1.clear();
+            TxEmail.clear();
+            txTelCliente2.clear();            
+            ChMedio.getSelectionModel().clearSelection();       
+            txWhatSapp.clear();
+            txTelCliente1.clear();
+            TxDocIde1.clear();  
+           
+
+    }
+
+    @FXML
+    void limpiarCliente(ActionEvent event) {
+
+
+            TxNombresCliente1.clear();
+            TxNumIdentidad1.clear();
+            TxEmail.clear();
+            txTelCliente2.clear();            
+            ChMedio.getSelectionModel().clearSelection();       
+            txWhatSapp.clear();
+            txTelCliente1.clear();
+            TxDocIde1.clear();  
+     
+         }
+
+
+    @FXML
+    void buscarClientes(ActionEvent event) {
+
+        String datos;
+        String[] vector;
+         
+        if (TxDocIde1.getLength() > 0 ){
+
+            datos = cliente.buscarClienteId(TxDocIde1.getText());
+            vector = datos.split(",");
+            System.out.println(datos);
+
+            if (datos.equals("")){
+
+                Alert dialogoAlerta = new Alert(AlertType.ERROR);
+                dialogoAlerta.setTitle("ERROR EN LA VALIDACIÓN DEL CLIENTE");
+                dialogoAlerta.setHeaderText("LEL CLIENTE  #" + TxDocIde1.getText() + " NO EXISTE");
+                dialogoAlerta.setContentText("Validar el id correcto del cliente");
+                dialogoAlerta.initStyle(StageStyle.UTILITY);
+                java.awt.Toolkit.getDefaultToolkit().beep();
+                dialogoAlerta.showAndWait();
+            }else{           
+                            
+                TxNombresCliente1.setText(vector[0]);
+                TxNumIdentidad1.setText(vector[1]);
+                TxEmail.setText(vector[2]);
+                txTelCliente1.setText(vector[3]);
+                txTelCliente2.setText(vector[4]);           
+                txWhatSapp.setText(vector[5]);
+                ChMedio.setValue(vector[6]);
+
+                             
+                
+            }     
+     
+        }else{
+
+            Alert dialogoAlerta = new Alert(AlertType.ERROR);
+            dialogoAlerta.setTitle("ERROR EN LA VALIDACIÓN DEL LA NOMINA");
+            dialogoAlerta.setHeaderText("ES NECESARIO DIGITAR EL CAMPO ID");
+            dialogoAlerta.setContentText("Validar el ID correcto de la nomina");
+            dialogoAlerta.initStyle(StageStyle.UTILITY);
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            dialogoAlerta.showAndWait();
+                   
+        }
+
+
+
+
+     
+         }    
+         
+         @FXML
+         void editarCliente(ActionEvent event) {   
+  
+                        
+            String nomCliente = "'" + TxNombresCliente1.getText() + "'";
+            String docCliente = "'" + TxNumIdentidad1.getText() + "'";
+            String emailCliente = "'" + TxEmail.getText() + "'";
+            String telDosClie  = "'" + txTelCliente2.getText() + "'";
+            String telUnoClie = "'" + txTelCliente1.getText() + "'";
+            String wtCliente = "'" + txWhatSapp.getText() + "'";
+            String refCliente = "'" + ChMedio.getValue() + "'";
+                                
+ 
+            cliente ingCliente = new cliente (nomCliente,docCliente,emailCliente,telDosClie,telUnoClie,wtCliente,refCliente );
+             
+            ingCliente.editarCliente(TxDocIde1.getText() );  
+                       
+
+
+            Alert dialogoAlerta = new Alert(AlertType.CONFIRMATION);
+            dialogoAlerta.setTitle("GESTION DE CLIEMTE");
+            dialogoAlerta.setHeaderText("Desea editar al cliente?");           
+            dialogoAlerta.initStyle(StageStyle.UTILITY);
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            dialogoAlerta.showAndWait();
+         
+           Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+           dialogoAlerta1.setTitle("MODIFICACIÓN DE EMPLEADOS");
+           dialogoAlerta1.setHeaderText("Operacion exitosa");           
+           dialogoAlerta1.initStyle(StageStyle.UTILITY);
+           java.awt.Toolkit.getDefaultToolkit().beep();
+           dialogoAlerta1.showAndWait();
+
+      
+  
+  
+  
+         }     
+    
+
+         @FXML
+         void retirarCliente(ActionEvent event) {
+     
+             Alert dialogoAlerta = new Alert(AlertType.CONFIRMATION);
+             dialogoAlerta.setTitle("ELIMINAR CLIENTE");
+             dialogoAlerta.setHeaderText("Desea eliminar el cliente de la base de datos?");           
+             dialogoAlerta.initStyle(StageStyle.UTILITY);
+             java.awt.Toolkit.getDefaultToolkit().beep();
+             dialogoAlerta.showAndWait();
+     
+        
+     
+            cliente.eliminarCliente(TxDocIde1.getText());
+        
+            Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+            dialogoAlerta1.setTitle("CLIENTE ELIMINADO");
+            dialogoAlerta1.setHeaderText("Operacion exitosa");           
+            dialogoAlerta1.initStyle(StageStyle.UTILITY);
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            dialogoAlerta1.showAndWait();
+     
+         }
 
     @FXML
     void ButtonEstadoDoc(ActionEvent event) {
@@ -316,6 +501,8 @@ public class ContabilidadRegistrosController implements Initializable {
         
         spCantidadMusicos1.setValueFactory(ValueSpCantidadMusicos1);
         spCantidadMusicos11.setValueFactory(ValueSpCantidadMusicos2);
+
+        TxDocIde1.setText(cliente.idCliente());  
        
        
     }

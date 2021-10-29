@@ -208,7 +208,7 @@ public class RecursosHumanoController implements Initializable{
     @FXML
     private Button ButtonGuardar3;
 
-
+    
 
     @FXML
     private Button ButtonLimpiarNominaGeneral;
@@ -929,8 +929,9 @@ public class RecursosHumanoController implements Initializable{
 
          } 
 
+     
 
-        @FXML
+    @FXML
     void ButtonEstado(ActionEvent event) {        
 
         if(ButtonEstado2.isSelected()){

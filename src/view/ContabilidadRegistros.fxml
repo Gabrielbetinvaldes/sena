@@ -62,7 +62,7 @@
                   <ChoiceBox fx:id="ChMedio" layoutX="208.0" layoutY="400.0" prefHeight="25.0" prefWidth="343.0" />
                   <TextField fx:id="TxNumIdentidad1" layoutX="208.0" layoutY="150.0" prefHeight="25.0" prefWidth="343.0" />
                   <TextField fx:id="txTelCliente2" layoutX="208.0" layoutY="300.0" prefHeight="25.0" prefWidth="343.0" />
-                  <TextField fx:id="TxDocIde1" layoutX="120.0" layoutY="27.0" prefHeight="25.0" prefWidth="86.0" />
+                  <TextField fx:id="TxDocIde1" layoutX="129.0" layoutY="26.0" prefHeight="25.0" prefWidth="86.0" />
                   <Label layoutX="48.0" layoutY="31.0" text="Id Cliente:" textFill="#655b15">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
@@ -103,13 +103,11 @@
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <Button fx:id="txBuscar5" layoutX="406.0" layoutY="24.0" mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="41.0" text="Button" />
-                  <Button fx:id="txBuscar4" layoutX="221.0" layoutY="27.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="24.0" text="Button" />
+                  <Button fx:id="ButtonGuardar4" layoutX="406.0" layoutY="24.0" mnemonicParsing="false" onAction="#guardarCliente" opacity="0.0" prefHeight="34.0" prefWidth="41.0" text="Button" />
+                  <Button fx:id="txBuscar4" layoutX="221.0" layoutY="27.0" mnemonicParsing="false" onAction="#buscarClientes" opacity="0.0" prefHeight="25.0" prefWidth="24.0" text="Button" />
                   <Button fx:id="txBuscar6" layoutX="487.0" layoutY="27.0" mnemonicParsing="false" onAction="#homeUno" opacity="0.0" prefHeight="25.0" prefWidth="23.0" text="Button" />
-                  <Button fx:id="txBuscar7" layoutX="105.0" layoutY="466.0" mnemonicParsing="false" opacity="0.0" prefHeight="37.0" prefWidth="46.0" text="Button" />
-                  <Button fx:id="txBuscar8" layoutX="285.0" layoutY="470.0" mnemonicParsing="false" opacity="0.0" prefHeight="37.0" prefWidth="52.0" text="Button" />
-                  <Button fx:id="txBuscar8" layoutX="459.0" layoutY="467.0" mnemonicParsing="false" opacity="0.0" prefHeight="42.0" prefWidth="45.0" text="Button" />
-                  <ImageView disable="true" fitHeight="32.0" fitWidth="39.0" layoutX="217.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="ButtonModificar3" layoutX="105.0" layoutY="466.0" mnemonicParsing="false" onAction="#editarCliente" opacity="0.0" prefHeight="37.0" prefWidth="46.0" text="Button" />
+                  <ImageView disable="true" fitHeight="32.0" fitWidth="39.0" layoutX="220.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@imagenes/buscar.png" />
                      </image>
@@ -124,17 +122,17 @@
                         <Image url="@imagenes/home.png" />
                      </image>
                   </ImageView>
-                  <ImageView disable="true" fitHeight="53.0" fitWidth="57.0" layoutX="101.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView disable="true" fitHeight="53.0" fitWidth="57.0" layoutX="102.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@imagenes/icons8-editar-archivo-48.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="48.0" fitWidth="61.0" layoutX="287.0" layoutY="464.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="48.0" fitWidth="61.0" layoutX="287.0" layoutY="465.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@imagenes/icons8-enviar-a-la-impresora-48.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="46.0" fitWidth="65.0" layoutX="453.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="46.0" fitWidth="65.0" layoutX="458.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@imagenes/icons8-borrar-para-siempre-48.png" />
                      </image>
@@ -156,6 +154,14 @@
                   </Label>
                   <Separator layoutX="1.0" layoutY="449.0" prefHeight="0.0" prefWidth="618.0" />
                   <Separator layoutX="1.0" layoutY="78.0" prefHeight="8.0" prefWidth="618.0" />
+                  <Button fx:id="ButtonImprimir3" layoutX="285.0" layoutY="468.0" mnemonicParsing="false" opacity="0.0" prefHeight="42.0" prefWidth="52.0" text="Button" />
+                  <Button fx:id="ButtonRetirar3" layoutX="455.0" layoutY="469.0" mnemonicParsing="false" onAction="#retirarCliente" opacity="0.0" prefHeight="40.0" prefWidth="52.0" text="Button" />
+                  <Button fx:id="ButtonLimpiarCliente" layoutX="261.0" layoutY="29.0" mnemonicParsing="false" onAction="#limpiarCliente" opacity="0.0" text="Button" />
+                  <ImageView disable="true" fitHeight="37.0" fitWidth="46.0" layoutX="268.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/limpiar.png" />
+                     </image>
+                  </ImageView>
                </children></AnchorPane>
       </content>
     </Tab>

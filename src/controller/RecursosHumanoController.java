@@ -517,21 +517,21 @@ public class RecursosHumanoController implements Initializable{
     void imprimirNomina(ActionEvent event) throws FileNotFoundException, DocumentException {
 
         
-    String idFactura = "'" + tfIdFacturas.getText() + "'";
-    String idEmpleado = "'" + tfIdEmpleado3.getText() + "'";
-    String nomEmpleado = "'" + tfNombres3.getText() + "'";
-    String cedulaEmpleado  = "'" + tfNumIdentidad3.getText() + "'";
-    String totalNomina = "'" + tfTotal1.getText() + "'";
-    String metodo = "'" + chMetodoPago1.getValue() + "'";
-    String fechaPago = "'" + fechaPago1.getValue() + "'";
-    String cSerenatas = "'" + tfSerenatas.getText() + "'";
-    String vNomina = "'" + tfNomina.getText()+ "'";
-    String salud = "'" + tfSalud.getText()+ "'";
-    String  pension = "'" + tfPension.getText() + "'";
-    String descuentos = "'" + tfDescuento.getText() + "'";
-    String cultural = "'" + tfCultural.getText()+ "'";
-    String ahorro = "'" + tfAhorro.getText()+ "'";
-    String idNomina = "'" + IdNomina1.getText() + "'";
+    String idFactura = tfIdFacturas.getText();
+    String idEmpleado =  tfIdEmpleado3.getText();
+    String nomEmpleado = tfNombres3.getText();
+    String cedulaEmpleado  =  tfNumIdentidad3.getText();
+    String totalNomina = tfTotal1.getText();
+    String metodo = chMetodoPago1.getValue();
+    String fechaPago = "" + fechaPago1.getValue() + "";
+    String cSerenatas =  tfSerenatas.getText();
+    String vNomina =  tfNomina.getText();
+    String salud =  tfSalud.getText();
+    String  pension =  tfPension.getText();
+    String descuentos = tfDescuento.getText();
+    String cultural = tfCultural.getText();
+    String ahorro = tfAhorro.getText();
+    String idNomina = IdNomina1.getText();
 
    
 

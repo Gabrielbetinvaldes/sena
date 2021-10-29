@@ -97,11 +97,11 @@ public class pdfNomina {
      
     
 
-        Paragraph parrafo1= new Paragraph("Comprobante de pago No " +  idNomina +                    "          Fecha: "+ hoy);
+        Paragraph parrafo1= new Paragraph("                                                Comprobante de pago No " +  idNomina +                    "                               Fecha: "+ hoy);
         parrafo1.setAlignment(1);                     
         Paragraph parrafo2= new Paragraph("______________________________________________________________________________"); 
         Paragraph parrafo3= new Paragraph("Empleado:" + nomEmpleado+ "                                     Documento de identidad: " + cedulaEmpleado );
-        Paragraph parrafo4= new Paragraph("Ciudad:     Barranquilla                                                       Telefono: 3016013248                  Direccion: Calle 46 # 6 c sur"    ); 
+        Paragraph parrafo4= new Paragraph("Ciudad:     Barranquilla                                                      Telefono: 3016013248                  Direccion: Calle 46 # 6 c sur"    ); 
         Paragraph parrafo5= new Paragraph("______________________________________________________________________________"); 
         Paragraph parrafo6= new Paragraph("__________________________" +  "                                   ____________________________"); 
         Paragraph parrafo7= new Paragraph("Richard Lindarte Antolinez" +  "                                             " + nomEmpleado );        

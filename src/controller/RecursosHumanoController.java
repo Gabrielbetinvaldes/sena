@@ -531,11 +531,12 @@ public class RecursosHumanoController implements Initializable{
     String descuentos = "'" + tfDescuento.getText() + "'";
     String cultural = "'" + tfCultural.getText()+ "'";
     String ahorro = "'" + tfAhorro.getText()+ "'";
+    String idNomina = "'" + IdNomina1.getText() + "'";
 
    
 
     pdfNomina certificado = new pdfNomina (idFactura,idEmpleado,cSerenatas,vNomina,pension,salud,descuentos,
-    ahorro,cultural,fechaPago,metodo,totalNomina,nomEmpleado,cedulaEmpleado);
+    ahorro,cultural,fechaPago,metodo,totalNomina,nomEmpleado,cedulaEmpleado,idNomina);
 
     certificado.imprimirCertificado();
 

@@ -43,7 +43,7 @@ public class pdfNomina {
     private String totalLiquidar;
     private String nomEmpleado;
     private String cedulaEmpleado;
-
+    private String idNomina;
 
 
 
@@ -51,7 +51,7 @@ public class pdfNomina {
 
     public pdfNomina(String factura, String idEmpleado, String serenatas, String vNomina, String pension, String salud,
             String descuentos, String ahorros, String cultural, String fechaPago, String metodoPago,
-            String totalLiquidar, String nomEmpleado, String cedulaEmpleado) {
+            String totalLiquidar, String nomEmpleado, String cedulaEmpleado, String idNomina) {
         this.factura = factura;
         this.idEmpleado = idEmpleado;
         this.serenatas = serenatas;
@@ -66,6 +66,7 @@ public class pdfNomina {
         this.totalLiquidar = totalLiquidar;
         this.nomEmpleado = nomEmpleado;
         this.cedulaEmpleado = cedulaEmpleado;
+        this.idNomina = idNomina;
     }
 
 
@@ -96,11 +97,11 @@ public class pdfNomina {
      
     
 
-        Paragraph parrafo1= new Paragraph("Comprobante de pago:                      Fecha: "+ hoy);
+        Paragraph parrafo1= new Paragraph("Comprobante de pago No " +  idNomina +                    "          Fecha: "+ hoy);
         parrafo1.setAlignment(1);                     
         Paragraph parrafo2= new Paragraph("______________________________________________________________________________"); 
-        Paragraph parrafo3= new Paragraph("Empleado:" + nomEmpleado+ "                                    Documento de identidad: " + cedulaEmpleado );
-        Paragraph parrafo4= new Paragraph("Ciudad:      Barranquilla                                                        Telefono: 3016013248                  Direccion: Calle 46 # 6 c sur"    ); 
+        Paragraph parrafo3= new Paragraph("Empleado:" + nomEmpleado+ "                                     Documento de identidad: " + cedulaEmpleado );
+        Paragraph parrafo4= new Paragraph("Ciudad:     Barranquilla                                                       Telefono: 3016013248                  Direccion: Calle 46 # 6 c sur"    ); 
         Paragraph parrafo5= new Paragraph("______________________________________________________________________________"); 
         Paragraph parrafo6= new Paragraph("__________________________" +  "                                   ____________________________"); 
         Paragraph parrafo7= new Paragraph("Richard Lindarte Antolinez" +  "                                             " + nomEmpleado );        
@@ -378,6 +379,20 @@ public class pdfNomina {
 
     public void setCedulaEmpleado(String cedulaEmpleado) {
         this.cedulaEmpleado = cedulaEmpleado;
+    }
+
+
+
+
+    public String getIdNomina() {
+        return idNomina;
+    }
+
+
+
+
+    public void setIdNomina(String idNomina) {
+        this.idNomina = idNomina;
     }
 
 

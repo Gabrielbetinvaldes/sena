@@ -351,7 +351,7 @@
                   <TextField fx:id="tfTotal1" layoutX="128.0" layoutY="383.0" prefHeight="25.0" prefWidth="88.0" />
                   <TextField fx:id="tfNombres3" layoutX="188.0" layoutY="94.0" prefHeight="25.0" prefWidth="262.0" />
                   <TextField fx:id="tfNumIdentidad3" layoutX="188.0" layoutY="130.0" prefHeight="25.0" prefWidth="262.0" />
-                  <Button fx:id="btImprimir2" layoutX="285.0" layoutY="461.0" mnemonicParsing="false" onAction="#imprimirNomina" text="Button" />
+                  <Button fx:id="btImprimir2" layoutX="276.0" layoutY="461.0" mnemonicParsing="false" onAction="#imprimirNomina" opacity="0.0" text="Button" />
                   <Button fx:id="Buttonhome3" layoutX="424.0" layoutY="22.0" mnemonicParsing="false" onAction="#homeUno" opacity="0.0" text="Button" />
                   <Button fx:id="btBuscar2" layoutX="275.0" layoutY="58.0" mnemonicParsing="false" onAction="#ButtonBuscar2" opacity="0.0" prefHeight="25.0" prefWidth="37.0" text="Button" />
                   <ImageView disable="true" fitHeight="39.0" fitWidth="37.0" layoutX="285.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">

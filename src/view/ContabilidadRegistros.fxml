@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="618.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ContabilidadRegistrosController">
+  <tabs>
+    <Tab style="-fx-background-color: #10978F;" text="Registrar Cliente">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="454.0" prefWidth="600.0" style="-fx-background-color: #FCD58D;">
+               <children>
+                  <TextField fx:id="TxNombresCliente1" layoutX="208.0" layoutY="100.0" prefHeight="25.0" prefWidth="343.0" />
+                  <TextField fx:id="TxEmail" layoutX="208.0" layoutY="200.0" prefHeight="25.0" prefWidth="343.0" />
+                  <TextField fx:id="txWhatSapp" layoutX="208.0" layoutY="350.0" prefHeight="25.0" prefWidth="343.0" />
+                  <TextField fx:id="txTelCliente1" layoutX="208.0" layoutY="250.0" prefHeight="25.0" prefWidth="343.0" />
+                  <ChoiceBox fx:id="ChMedio" layoutX="208.0" layoutY="400.0" prefHeight="25.0" prefWidth="343.0" />
+                  <TextField fx:id="TxNumIdentidad1" layoutX="208.0" layoutY="150.0" prefHeight="25.0" prefWidth="343.0" />
+                  <TextField fx:id="txTelCliente2" layoutX="208.0" layoutY="300.0" prefHeight="25.0" prefWidth="343.0" />
+                  <TextField fx:id="TxDocIde1" layoutX="120.0" layoutY="27.0" prefHeight="25.0" prefWidth="86.0" />
+                  <Label layoutX="48.0" layoutY="31.0" text="Id Cliente:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="46.0" layoutY="104.0" text="Nombres del cliente:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="46.0" layoutY="154.0" text="Numero de identificación:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="46.0" layoutY="204.0" text="Email:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="46.0" layoutY="254.0" text="Telefono 1:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="46.0" layoutY="304.0" text="Telefono 2:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="43.0" layoutY="354.0" text="Whatsapp:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="43.0" layoutY="404.0" text="Donde conocio al mariachi:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="txBuscar5" layoutX="406.0" layoutY="24.0" mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="41.0" text="Button" />
+                  <Button fx:id="txBuscar4" layoutX="221.0" layoutY="27.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="24.0" text="Button" />
+                  <Button fx:id="txBuscar6" layoutX="487.0" layoutY="27.0" mnemonicParsing="false" onAction="#homeUno" opacity="0.0" prefHeight="25.0" prefWidth="23.0" text="Button" />
+                  <Button fx:id="txBuscar7" layoutX="105.0" layoutY="466.0" mnemonicParsing="false" opacity="0.0" prefHeight="37.0" prefWidth="46.0" text="Button" />
+                  <Button fx:id="txBuscar8" layoutX="285.0" layoutY="470.0" mnemonicParsing="false" opacity="0.0" prefHeight="37.0" prefWidth="52.0" text="Button" />
+                  <Button fx:id="txBuscar8" layoutX="459.0" layoutY="467.0" mnemonicParsing="false" opacity="0.0" prefHeight="42.0" prefWidth="45.0" text="Button" />
+                  <ImageView disable="true" fitHeight="32.0" fitWidth="39.0" layoutX="217.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/buscar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView disable="true" fitHeight="33.0" fitWidth="37.0" layoutX="416.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/disquete.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView disable="true" fitHeight="37.0" fitWidth="42.0" layoutX="481.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/home.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView disable="true" fitHeight="53.0" fitWidth="57.0" layoutX="101.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/icons8-editar-archivo-48.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="61.0" layoutX="287.0" layoutY="464.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/icons8-enviar-a-la-impresora-48.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="65.0" layoutX="453.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/icons8-borrar-para-siempre-48.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="101.0" layoutY="510.0" text="Modificar" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="286.0" layoutY="510.0" text="Imprimir" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="455.0" layoutY="510.0" text="Eliminar" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="1.0" layoutY="449.0" prefHeight="0.0" prefWidth="618.0" />
+                  <Separator layoutX="1.0" layoutY="78.0" prefHeight="8.0" prefWidth="618.0" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab style="-fx-background-color: #FFFFFF;" text="Cotización">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="539.0" prefWidth="600.0" style="-fx-background-color: #FCD58D;">
+               <children>
+                  <Button fx:id="btGuardar5" layoutX="445.0" layoutY="14.0" mnemonicParsing="false" opacity="0.0" prefHeight="33.0" prefWidth="39.0" text="Button" />
+                  <Button fx:id="bthome5" layoutX="508.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeUno" opacity="0.0" prefHeight="34.0" prefWidth="40.0" text="Button" />
+                  <ImageView disable="true" fitHeight="34.0" fitWidth="35.0" layoutX="450.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/disquete.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView disable="true" fitHeight="34.0" fitWidth="36.0" layoutX="511.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/home.png" />
+                     </image>
+                  </ImageView>
+                  <DatePicker fx:id="tfFechaCotizacion" layoutX="98.0" layoutY="19.0" prefHeight="25.0" prefWidth="173.0" />
+                  <Label layoutX="26.0" layoutY="23.0" text="Fecha:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="80.0" text="Id cliente:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="247.0" layoutY="75.0" text="Id Cotizacion:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfCliente2" layoutX="134.0" layoutY="75.0" prefHeight="25.0" prefWidth="92.0" />
+                  <TextField fx:id="tfCotizacion1" layoutX="340.0" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" />
+                  <Button fx:id="btBuscar9" layoutX="436.0" layoutY="72.0" mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="42.0" text="Button" />
+                  <Button fx:id="btModificar9" layoutX="487.0" layoutY="72.0" mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="42.0" text="Button" />
+                  <Button fx:id="btRetirar9" layoutX="543.0" layoutY="72.0" mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="42.0" text="Button" />
+                  <ImageView disable="true" fitHeight="36.0" fitWidth="37.0" layoutX="435.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/buscar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView disable="true" fitHeight="36.0" fitWidth="37.0" layoutX="490.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/icons8-editar-archivo-48.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView disable="true" fitHeight="37.0" fitWidth="44.0" layoutX="546.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/icons8-borrar-para-siempre-48.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btImprimir9" layoutX="369.0" layoutY="13.0" mnemonicParsing="false" opacity="0.0" prefHeight="37.0" prefWidth="44.0" />
+                  <ImageView disable="true" fitHeight="46.0" fitWidth="51.0" layoutX="374.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/icons8-enviar-a-la-impresora-48.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="28.0" layoutY="115.0" text="Nombres:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfNombreCLiente3" layoutX="134.0" layoutY="110.0" prefHeight="25.0" prefWidth="443.0" />
+                  <Label layoutX="28.0" layoutY="150.0" text="Email:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="148.0" text="Whatsapp:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfEmail2" layoutX="134.0" layoutY="145.0" prefHeight="25.0" prefWidth="178.0" />
+                  <TextField fx:id="tfWtSapp2" layoutX="393.0" layoutY="145.0" prefHeight="25.0" prefWidth="185.0" />
+                  <TextField fx:id="tfTelefonoCliente1" layoutX="134.0" layoutY="180.0" prefHeight="25.0" prefWidth="178.0" />
+                  <TextField fx:id="tfTelefonoCliente2" layoutX="393.0" layoutY="180.0" prefHeight="25.0" prefWidth="185.0" />
+                  <Label layoutX="28.0" layoutY="185.0" text="Telefono 1:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="183.0" text="Telefono 2:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfBarrio1" layoutX="134.0" layoutY="215.0" prefHeight="25.0" prefWidth="178.0" />
+                  <TextField fx:id="tfCiudad2" layoutX="393.0" layoutY="215.0" prefHeight="25.0" prefWidth="185.0" />
+                  <Label layoutX="320.0" layoutY="218.0" text="Ciudad:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="220.0" text="Barrio:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfDireccionCliente1" layoutX="134.0" layoutY="250.0" prefHeight="25.0" prefWidth="178.0" />
+                  <ChoiceBox fx:id="chMotivos1" layoutX="393.0" layoutY="250.0" prefHeight="25.0" prefWidth="185.0" />
+                  <Label layoutX="28.0" layoutY="255.0" text="Direccion:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="253.0" text="Motivo:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="325.0" text="Quien obsequia?:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="290.0" text="Homenajeado:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfHomenajeado1" layoutX="134.0" layoutY="285.0" prefHeight="25.0" prefWidth="178.0" />
+                  <TextField fx:id="tfQuien1" layoutX="134.0" layoutY="320.0" prefHeight="25.0" prefWidth="178.0" />
+                  <ChoiceBox fx:id="chParentezco1" layoutX="393.0" layoutY="285.0" prefHeight="25.0" prefWidth="185.0" />
+                  <ChoiceBox fx:id="chObsequio1" layoutX="393.0" layoutY="320.0" prefHeight="25.0" prefWidth="185.0" />
+                  <Label layoutX="320.0" layoutY="323.0" text="Obsequio:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="289.0" text="Parentezco:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfCostoServicio1" layoutX="134.0" layoutY="355.0" prefHeight="25.0" prefWidth="178.0" />
+                  <Label layoutX="320.0" layoutY="394.0" text="Cantidad de musicos:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="360.0" text="Precio de venta:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfSonido1" layoutX="134.0" layoutY="390.0" prefHeight="25.0" prefWidth="178.0" />
+                  <TextField fx:id="tfPrecioSerenata1" layoutX="393.0" layoutY="355.0" prefHeight="25.0" prefWidth="185.0" />
+                  <Label layoutX="28.0" layoutY="394.0" text="Precio Obsequio" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="362.0" text="Sonido:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TableView editable="true" layoutX="4.0" layoutY="443.0" prefHeight="94.0" prefWidth="610.0">
+                    <columns>
+                      <TableColumn prefWidth="94.0" style="-fx-background-color: #06E6F0;" text="Servicio" />
+                        <TableColumn prefWidth="151.0" style="-fx-background-color: #06E6F0;" text="Sonido" />
+                        <TableColumn prefWidth="66.0" style="-fx-background-color: #06E6F0;" text="Obsequio" />
+                      <TableColumn minWidth="0.0" prefWidth="160.0" style="-fx-background-color: #06E6F0;" text="Musicos" />
+                        <TableColumn prefWidth="75.0" style="-fx-background-color: #06E6F0;" text="Transporte" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Spinner fx:id="spCantidadMusicos1" layoutX="448.0" layoutY="390.0" prefHeight="25.0" prefWidth="77.0" />
+                  <Button layoutX="539.0" layoutY="390.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="35.0" text="Button" />
+                  <ImageView disable="true" fitHeight="28.0" fitWidth="35.0" layoutX="543.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/icons8-agregar-base-de-datos-48.png" />
+                     </image>
+                  </ImageView>
+                  <Separator layoutX="10.0" layoutY="429.0" prefHeight="4.0" prefWidth="600.0" />
+                  <Separator layoutX="-8.0" layoutY="55.0" prefHeight="5.0" prefWidth="626.0" />
+                  <ToggleButton fx:id="tgButtonCotizacion" layoutX="289.0" layoutY="14.0" mnemonicParsing="false" onAction="#ButtonEstadoDoc" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #008000;" text="Activa" textFill="#fff6f6">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </ToggleButton>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab style="-fx-background-color: #FF4933;" text="Facturas">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="539.0" prefWidth="600.0" style="-fx-background-color: #FCD58D;">
+               <children>
+                  <Button fx:id="btGuardar51" layoutX="445.0" layoutY="14.0" mnemonicParsing="false" opacity="0.0" prefHeight="33.0" prefWidth="39.0" text="Button" />
+                  <Button fx:id="bthome51" layoutX="508.0" layoutY="14.0" mnemonicParsing="false" onAction="#homeUno" opacity="0.0" prefHeight="34.0" prefWidth="40.0" text="Button" />
+                  <ImageView disable="true" fitHeight="34.0" fitWidth="35.0" layoutX="450.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/disquete.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView disable="true" fitHeight="34.0" fitWidth="36.0" layoutX="511.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/home.png" />
+                     </image>
+                  </ImageView>
+                  <DatePicker fx:id="tfFechaCotizacion2" layoutX="98.0" layoutY="19.0" prefHeight="25.0" prefWidth="173.0" />
+                  <Label layoutX="26.0" layoutY="23.0" text="Fecha:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="80.0" text="Id Factura:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="247.0" layoutY="75.0" text="Id Cotizacion:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfCliente21" layoutX="134.0" layoutY="75.0" prefHeight="25.0" prefWidth="92.0" />
+                  <TextField fx:id="tfCotizacion11" layoutX="340.0" layoutY="75.0" prefHeight="25.0" prefWidth="80.0" />
+                  <Button fx:id="btBuscar91" layoutX="436.0" layoutY="72.0" mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="42.0" text="Button" />
+                  <Button fx:id="btModificar91" layoutX="487.0" layoutY="72.0" mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="42.0" text="Button" />
+                  <Button fx:id="btRetirar91" layoutX="543.0" layoutY="72.0" mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="42.0" text="Button" />
+                  <ImageView disable="true" fitHeight="36.0" fitWidth="37.0" layoutX="435.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/buscar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView disable="true" fitHeight="36.0" fitWidth="37.0" layoutX="490.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/icons8-editar-archivo-48.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView disable="true" fitHeight="37.0" fitWidth="44.0" layoutX="546.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/icons8-borrar-para-siempre-48.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btImprimir91" layoutX="369.0" layoutY="13.0" mnemonicParsing="false" opacity="0.0" prefHeight="37.0" prefWidth="44.0" />
+                  <ImageView disable="true" fitHeight="46.0" fitWidth="51.0" layoutX="374.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/icons8-enviar-a-la-impresora-48.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="28.0" layoutY="115.0" text="Nombres:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfNombreCLiente31" layoutX="134.0" layoutY="110.0" prefHeight="25.0" prefWidth="443.0" />
+                  <Label layoutX="28.0" layoutY="150.0" text="Email:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="148.0" text="Whatsapp:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfEmail21" layoutX="134.0" layoutY="145.0" prefHeight="25.0" prefWidth="178.0" />
+                  <TextField fx:id="tfWtSapp21" layoutX="393.0" layoutY="145.0" prefHeight="25.0" prefWidth="185.0" />
+                  <TextField fx:id="tfTelefonoCliente11" layoutX="134.0" layoutY="180.0" prefHeight="25.0" prefWidth="178.0" />
+                  <TextField fx:id="tfTelefonoCliente21" layoutX="393.0" layoutY="180.0" prefHeight="25.0" prefWidth="185.0" />
+                  <Label layoutX="28.0" layoutY="185.0" text="Telefono 1:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="183.0" text="Telefono 2:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfBarrio11" layoutX="134.0" layoutY="215.0" prefHeight="25.0" prefWidth="178.0" />
+                  <TextField fx:id="tfCiudad21" layoutX="393.0" layoutY="215.0" prefHeight="25.0" prefWidth="185.0" />
+                  <Label layoutX="320.0" layoutY="218.0" text="Ciudad:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="220.0" text="Barrio:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfDireccionCliente11" layoutX="134.0" layoutY="250.0" prefHeight="25.0" prefWidth="178.0" />
+                  <ChoiceBox fx:id="chMotivos11" layoutX="393.0" layoutY="250.0" prefHeight="25.0" prefWidth="185.0" />
+                  <Label layoutX="28.0" layoutY="255.0" text="Direccion:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="253.0" text="Motivo:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="325.0" text="Quien obsequia?:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="290.0" text="Homenajeado:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfHomenajeado11" layoutX="134.0" layoutY="285.0" prefHeight="25.0" prefWidth="178.0" />
+                  <TextField fx:id="tfQuien11" layoutX="134.0" layoutY="320.0" prefHeight="25.0" prefWidth="178.0" />
+                  <ChoiceBox fx:id="chParentezco11" layoutX="393.0" layoutY="285.0" prefHeight="25.0" prefWidth="185.0" />
+                  <ChoiceBox fx:id="chObsequio11" layoutX="393.0" layoutY="320.0" prefHeight="25.0" prefWidth="185.0" />
+                  <Label layoutX="320.0" layoutY="323.0" text="Obsequio:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="289.0" text="Parentezco:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfCostoServicio11" layoutX="134.0" layoutY="355.0" prefHeight="25.0" prefWidth="178.0" />
+                  <Label layoutX="320.0" layoutY="394.0" text="Cantidad de musicos:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="360.0" text="Precio de venta:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfSonido11" layoutX="134.0" layoutY="390.0" prefHeight="25.0" prefWidth="178.0" />
+                  <TextField fx:id="tfPrecioSerenata11" layoutX="393.0" layoutY="355.0" prefHeight="25.0" prefWidth="185.0" />
+                  <Label layoutX="28.0" layoutY="394.0" text="Precio Obsequio" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="362.0" text="Sonido:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TableView editable="true" layoutX="4.0" layoutY="443.0" prefHeight="94.0" prefWidth="610.0">
+                     <columns>
+                        <TableColumn prefWidth="94.0" style="-fx-background-color: #06E6F0;" text="Servicio" />
+                        <TableColumn prefWidth="151.0" style="-fx-background-color: #06E6F0;" text="Sonido" />
+                        <TableColumn prefWidth="66.0" style="-fx-background-color: #06E6F0;" text="Obsequio" />
+                        <TableColumn minWidth="0.0" prefWidth="160.0" style="-fx-background-color: #06E6F0;" text="Musicos" />
+                        <TableColumn prefWidth="75.0" style="-fx-background-color: #06E6F0;" text="Transporte" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+                  <Spinner fx:id="spCantidadMusicos11" layoutX="448.0" layoutY="390.0" prefHeight="25.0" prefWidth="77.0" />
+                  <Button layoutX="539.0" layoutY="390.0" mnemonicParsing="false" opacity="0.0" prefHeight="25.0" prefWidth="35.0" text="Button" />
+                  <ImageView disable="true" fitHeight="28.0" fitWidth="35.0" layoutX="543.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imagenes/icons8-agregar-base-de-datos-48.png" />
+                     </image>
+                  </ImageView>
+                  <Separator layoutX="10.0" layoutY="429.0" prefHeight="4.0" prefWidth="600.0" />
+                  <Separator layoutX="-2.0" layoutY="54.0" prefHeight="3.0" prefWidth="625.0" />
+                  <ToggleButton fx:id="tgButtonFactura" layoutX="289.0" layoutY="14.0" mnemonicParsing="false" onAction="#ButtonEstadoDoc" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #008000;" text="Activa" textFill="#fff6f6">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </ToggleButton>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+  </tabs>
+</TabPane>

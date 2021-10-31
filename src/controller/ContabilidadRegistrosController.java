@@ -1,8 +1,12 @@
 package controller;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.itextpdf.text.DocumentException;
+
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -22,6 +26,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.cliente;
+import model.pdfCliente;
+import model.pdfNomina;
 
 public class ContabilidadRegistrosController implements Initializable {
     @FXML
@@ -415,6 +421,29 @@ public class ContabilidadRegistrosController implements Initializable {
             dialogoAlerta1.showAndWait();
      
          }
+
+
+         @FXML
+         void imprimirCliente(ActionEvent event) throws FileNotFoundException, DocumentException {
+     
+            String nomCliente = TxNombresCliente1.getText();
+            String docCliente = TxNumIdentidad1.getText();
+            String emailCliente = TxEmail.getText();
+            String telDosClie  = txTelCliente2.getText();
+            String telUnoClie = txTelCliente1.getText();
+            String wtCliente =  txWhatSapp.getText();
+            String idCliente =  TxDocIde1.getText();
+            String refCliente =  ChMedio.getValue();
+        
+     
+            pdfCliente certificado = new pdfCliente (nomCliente,docCliente, emailCliente, telDosClie , telUnoClie, wtCliente, refCliente, idCliente);
+     
+         
+            certificado.imprimirCertificado();
+     
+         }
+
+
 
     @FXML
     void ButtonEstadoDoc(ActionEvent event) {

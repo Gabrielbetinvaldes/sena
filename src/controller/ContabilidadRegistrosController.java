@@ -26,6 +26,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.cliente;
+import model.cotizacion;
 import model.pdfCliente;
 import model.pdfNomina;
 
@@ -67,9 +68,16 @@ public class ContabilidadRegistrosController implements Initializable {
     @FXML
     private Button ButtonModificar3;
 
+
+
+    @FXML
+    private Button buttonBusCliente;
+
+    @FXML
+    private Button ButthonLimpiarCLiente2;
    
     @FXML
-    private Button btGuardar5;
+    private Button ButtonGuardar5;
 
     @FXML
     private Button bthome5;
@@ -131,10 +139,10 @@ public class ContabilidadRegistrosController implements Initializable {
     private TextField tfCostoServicio1;
 
     @FXML
-    private TextField tfSonido1;
+    private TextField tfPreObsequio1;
 
     @FXML
-    private TextField tfPrecioSerenata1;
+    private TextField tfPrecioSonido1;
 
 
 
@@ -246,6 +254,128 @@ public class ContabilidadRegistrosController implements Initializable {
     @FXML
     private Button ButtonRetirar3;
 
+    @FXML
+    private TextField tfTransporte;
+
+    
+    @FXML
+    private TextField totalCotizacion;
+
+    @FXML
+    private Button buttonCalculaCotiz;
+
+
+    @FXML
+    private Button ButLimpiarCotizacionCalculo;
+
+
+    @FXML
+    void calcularCotizacion(ActionEvent event) {
+
+        String precioVenta = tfCostoServicio1.getText();
+        String sonido = tfPrecioSonido1.getText();
+        String preObsequio= tfPreObsequio1.getText();
+        String transporte = tfTransporte.getText();
+        
+       
+        String total = String.valueOf(Integer.parseInt(precioVenta) + Integer.parseInt(sonido) + Integer.parseInt(preObsequio) + Integer.parseInt(transporte));
+
+        totalCotizacion.setText(total);
+        totalCotizacion.setEditable(false);
+
+
+
+    }
+
+    @FXML
+    void limpiarCalculoCotizacion(ActionEvent event) {
+
+
+        tfCostoServicio1.setText("0");
+        tfPrecioSonido1.setText("0");
+        tfPreObsequio1.setText("0");
+        tfTransporte.setText("0");
+        totalCotizacion.setEditable(true);
+        totalCotizacion.clear();  
+     
+         }
+
+
+
+    @FXML
+    void guardarCotizacion(ActionEvent event) {
+
+           String fechaCotizacion= "'" + tfFechaCotizacion.getValue() + "'";
+           String idCliente = "'" + tfCliente2.getText() + "'";
+           String nombreCliente = "'" + tfNombreCLiente3.getText() + "'";
+           String emailCliente  = "'" + tfEmail2.getText() + "'";
+           String wtCliente  = "'" + tfWtSapp2.getText() + "'";
+           String telDosClie  = "'" + tfTelefonoCliente2.getText() + "'";
+           String telUnoClie = "'" + tfTelefonoCliente1.getText() + "'";
+           String barrio = "'" + tfBarrio1.getText() + "'";
+           String ciudad = "'" + tfCiudad2.getText() + "'";
+           String direccion= "'" + tfDireccionCliente1.getText() + "'";
+           String motivo = "'" + chMotivos1.getValue() + "'";
+           String homenajeado = "'" + tfHomenajeado1.getText() + "'";
+           String parentezco = "'" + chParentezco1.getValue() + "'";
+           String quien = "'" + tfQuien1.getText() + "'";
+           String obsequio = "'" + chObsequio1.getValue() + "'";
+           String precioVenta = "'" + tfCostoServicio1.getText() + "'";
+           String sonido = "'" + tfPrecioSonido1.getText() + "'";
+           String preObsequio= "'" + tfPreObsequio1.getText() + "'";
+           String cantMusico = "'" + spCantidadMusicos1.getValue() + "'";
+           String estado =  "'" + tgButtonCotizacion.getText() + "'";
+           String transporte = "'" + tfTransporte.getText() + "'";
+           
+          
+
+           cotizacion ingCotizacion = new cotizacion (fechaCotizacion,idCliente,nombreCliente,emailCliente,
+           wtCliente,telDosClie,telUnoClie,barrio,ciudad,direccion,motivo,homenajeado,parentezco,quien, 
+           obsequio,precioVenta,sonido,preObsequio,cantMusico,estado,transporte);
+            
+           ingCotizacion.cargaCotizacion(); 
+
+            Alert dialogoAlerta = new Alert(AlertType.CONFIRMATION);
+            dialogoAlerta.setTitle("CREACIÓN DE COTIZACION");
+            dialogoAlerta.setHeaderText("Desea crear una nueva cotizacion?");           
+            dialogoAlerta.initStyle(StageStyle.UTILITY);
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            dialogoAlerta.showAndWait();
+
+            Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+            dialogoAlerta1.setTitle("CREACIÓN DE COTIZACION");
+            dialogoAlerta1.setHeaderText("Operacion exitosa");           
+            dialogoAlerta1.initStyle(StageStyle.UTILITY);
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            dialogoAlerta1.showAndWait();
+
+           tfFechaCotizacion.setValue(null);
+           tfCliente2.clear();
+           tfNombreCLiente3.clear();
+           tfEmail2.clear();
+           tfWtSapp2.clear();
+           tfTelefonoCliente2.clear();
+           tfTelefonoCliente1.clear();
+           tfBarrio1.clear();
+           tfCiudad2.clear();
+           tfDireccionCliente1.clear();
+           chMotivos1.getSelectionModel().clearSelection(); 
+           tfHomenajeado1.clear();
+           chParentezco1.getSelectionModel().clearSelection(); 
+           tfQuien1.clear();
+           chObsequio1.getSelectionModel().clearSelection(); 
+           tfCostoServicio1.clear();
+           tfPrecioSonido1.clear();
+           tfPreObsequio1.clear();
+           SpinnerValueFactory<Integer> spCantidadMusicos1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100);           
+           spCantidadMusicos1.setValue(0);
+           
+                 
+          
+
+    }
+
+
 
     @FXML
     void guardarCliente(ActionEvent event) {
@@ -305,6 +435,54 @@ public class ContabilidadRegistrosController implements Initializable {
      
          }
 
+
+         @FXML
+         void limpiarClienteDos(ActionEvent event) {
+     
+            tfCliente2.clear();
+            tfNombreCLiente3.clear();
+            tfEmail2.clear();
+            tfWtSapp2.clear();
+            tfTelefonoCliente1.clear();             
+            tfTelefonoCliente2.clear();
+             
+          
+              }
+
+
+         @FXML
+         void buscarClientesCotizacion(ActionEvent event) {
+     
+             String datos;
+             String[] vector;
+              
+             if (TxDocIde1.getLength() > 0 ){
+     
+                 datos = cliente.buscarClienteId(tfCliente2.getText());
+                 vector = datos.split(",");
+                 System.out.println(datos);
+     
+                 if (datos.equals("")){
+     
+                     Alert dialogoAlerta = new Alert(AlertType.ERROR);
+                     dialogoAlerta.setTitle("ERROR EN LA VALIDACIÓN DEL CLIENTE");
+                     dialogoAlerta.setHeaderText("LEL CLIENTE  #" + tfCliente2.getText() + " NO EXISTE");
+                     dialogoAlerta.setContentText("Validar el id correcto del cliente");
+                     dialogoAlerta.initStyle(StageStyle.UTILITY);
+                     java.awt.Toolkit.getDefaultToolkit().beep();
+                     dialogoAlerta.showAndWait();
+                 }else{           
+                                 
+                    tfNombreCLiente3.setText(vector[0]);
+                    tfEmail2.setText(vector[2]);
+                    tfTelefonoCliente1.setText(vector[3]);
+                    tfTelefonoCliente2.setText(vector[4]);           
+                    tfWtSapp2.setText(vector[5]);
+                    
+     
+                 }                
+              }   
+            }         
 
     @FXML
     void buscarClientes(ActionEvent event) {
@@ -445,6 +623,12 @@ public class ContabilidadRegistrosController implements Initializable {
 
 
 
+
+
+
+
+
+
     @FXML
     void ButtonEstadoDoc(ActionEvent event) {
 
@@ -465,12 +649,12 @@ public class ContabilidadRegistrosController implements Initializable {
         if(tgButtonCotizacion.isSelected()){
 
             tgButtonCotizacion.setStyle("-fx-background-color: #008000;");
-            tgButtonCotizacion.setText("Activo");   
+            tgButtonCotizacion.setText("Activa");   
                
                
         }else{
             tgButtonCotizacion.setStyle("-fx-background-color: #ff0000;");
-            tgButtonCotizacion.setText("Inactivo");
+            tgButtonCotizacion.setText("Inactiva");
 
         }
 

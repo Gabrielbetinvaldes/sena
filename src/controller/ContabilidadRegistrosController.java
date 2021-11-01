@@ -273,6 +273,85 @@ public class ContabilidadRegistrosController implements Initializable {
     private Button buttonLimpiarCotizacionG;
 
 
+
+
+    @FXML
+    void retirarCotizacion(ActionEvent event) {
+
+        Alert dialogoAlerta = new Alert(AlertType.CONFIRMATION);
+        dialogoAlerta.setTitle("ELIMINAR COTIZACION");
+        dialogoAlerta.setHeaderText("Desea eliminar un registro de la base de datos?");           
+        dialogoAlerta.initStyle(StageStyle.UTILITY);
+        java.awt.Toolkit.getDefaultToolkit().beep();
+        dialogoAlerta.showAndWait();
+
+   
+
+        cotizacion.eliminarCotizacion(tfCotizacion1.getText());
+
+        Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+        dialogoAlerta1.setTitle("ELIMINAR COTIZACION");
+        dialogoAlerta1.setHeaderText("Operacion exitosa");           
+        dialogoAlerta1.initStyle(StageStyle.UTILITY);
+        java.awt.Toolkit.getDefaultToolkit().beep();
+        dialogoAlerta1.showAndWait();
+
+    }
+
+
+    @FXML
+    void modificarCotizacion(ActionEvent event) {
+
+
+        String fechaCotizacion= "'" + tfFechaCotizacion.getValue() + "'";
+           String idCliente = "'" + tfCliente2.getText() + "'";
+           String nombreCliente = "'" + tfNombreCLiente3.getText() + "'";
+           String emailCliente  = "'" + tfEmail2.getText() + "'";
+           String wtCliente  = "'" + tfWtSapp2.getText() + "'";
+           String telDosClie  = "'" + tfTelefonoCliente2.getText() + "'";
+           String telUnoClie = "'" + tfTelefonoCliente1.getText() + "'";
+           String barrio = "'" + tfBarrio1.getText() + "'";
+           String ciudad = "'" + tfCiudad2.getText() + "'";
+           String direccion= "'" + tfDireccionCliente1.getText() + "'";
+           String motivo = "'" + chMotivos1.getValue() + "'";
+           String homenajeado = "'" + tfHomenajeado1.getText() + "'";
+           String parentezco = "'" + chParentezco1.getValue() + "'";
+           String quien = "'" + tfQuien1.getText() + "'";
+           String obsequio = "'" + chObsequio1.getValue() + "'";
+           String precioVenta = "'" + tfCostoServicio1.getText() + "'";
+           String sonido = "'" + tfPrecioSonido1.getText() + "'";
+           String preObsequio= "'" + tfPreObsequio1.getText() + "'";
+           String cantMusico = "'" + spCantidadMusicos1.getValue() + "'";
+           String estado =  "'" + tgButtonCotizacion.getText() + "'";
+           String transporte = "'" + tfTransporte.getText() + "'";
+           String total =  "'" + totalCotizacion.getText() + "'";
+
+
+           cotizacion ingCotizacion = new cotizacion (fechaCotizacion,idCliente,nombreCliente,emailCliente,
+           wtCliente,telDosClie,telUnoClie,barrio,ciudad,direccion,motivo,homenajeado,parentezco,quien, 
+           obsequio,precioVenta,sonido,preObsequio,cantMusico,estado,transporte,total);
+            
+           ingCotizacion.editarCotizacion( "'" + tfCotizacion1.getText()+ "'"); 
+   
+          
+           Alert dialogoAlerta = new Alert(AlertType.CONFIRMATION);
+            dialogoAlerta.setTitle("MODIFICAR COTIZACION");
+            dialogoAlerta.setHeaderText("Desea modificar la cotizacion?");           
+            dialogoAlerta.initStyle(StageStyle.UTILITY);
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            dialogoAlerta.showAndWait();
+
+            Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+            dialogoAlerta1.setTitle("MODIFICAR COTIZACION");
+            dialogoAlerta1.setHeaderText("Operacion exitosa");           
+            dialogoAlerta1.initStyle(StageStyle.UTILITY);
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            dialogoAlerta1.showAndWait();
+
+
+    }
+
+
     @FXML
     void limpiarCotizacionGeneral(ActionEvent event) {
 

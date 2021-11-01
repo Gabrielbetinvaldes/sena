@@ -64,6 +64,55 @@ public class cotizacion extends ContabilidadRegistrosController{
         this.totalCotizacion = totalCotizacion;
     }
 
+
+
+    public  static void eliminarCotizacion(String id){
+
+
+        String cadenaSQL = "DELETE FROM cotizacion  WHERE CotIdCotizacion = " + id ;
+          
+        System.out.println(cadenaSQL);
+        try {
+            Connect objConexion = new Connect();
+    
+            Connection conn = objConexion.connect(); // devuelve el objeto conectado a la URL
+            Statement stmt =  conn.createStatement(); // permiten realizar consultas SQL en la B.D.
+                        
+            stmt.executeUpdate(cadenaSQL); // para insertar datos.
+            conn.close();
+            stmt.close();
+            System.out.println("Eliminado.");            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    
+    }
+
+    public void editarCotizacion(String id){
+
+      
+        
+      
+        String cadenaSQL = "UPDATE cotizacion  SET CotIdCliente = " + idCliente +", CotFechaCotizacion = " +fechaCotizacion + ", CotBarrio = " + barrio + ", CotCiudad = " + ciudad + ", CotDireccion = " + direccion +  ", CotMotivo = " +motivo + ", CotHomenajeado = " + homenajeado  +" , CotParentezco = " + parentezco + ", CotQuienObsequia = " + quien + " , CotObsequio = " + obsequio+ ", CotPrecioVenta = " + precioVenta + ", CotSonido= " + sonido + ",CotPrecioObsequio = " + preObsequio + ",CotCantidadMusicos = " + cantMusico + ", CotEstado = " +estado+ " ,CotTransporte= " + transporte+ ",CotTotal = " + totalCotizacion + " WHERE CotIdCotizacion = " + id + ";" ;
+              
+            System.out.println(cadenaSQL);
+            try {
+                Connect objConexion = new Connect();
+        
+                Connection conn = objConexion.connect(); // devuelve el objeto conectado a la URL
+                Statement stmt =  conn.createStatement(); // permiten realizar consultas SQL en la B.D.
+                            
+                stmt.executeUpdate(cadenaSQL); // para insertar datos.
+                conn.close();
+                stmt.close();
+                System.out.println("Guardado.");            
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        
+        }
+
+
     public static String idCotizacion(){
     
         String mostrar = "";

@@ -200,19 +200,19 @@
                   <TextField fx:id="tfCliente2" layoutX="134.0" layoutY="75.0" prefHeight="25.0" prefWidth="92.0" />
                   <TextField fx:id="tfCotizacion1" layoutX="416.0" layoutY="71.0" prefHeight="25.0" prefWidth="80.0" />
                   <Button fx:id="btBuscar9" layoutX="496.0" layoutY="71.0" mnemonicParsing="false" onAction="#buscarCotizacionGeneral" opacity="0.0" prefHeight="34.0" prefWidth="42.0" text="Button" />
-                  <Button fx:id="btModificar9" layoutX="159.0" layoutY="461.0" mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="42.0" text="Button" />
-                  <Button fx:id="btRetirar9" layoutX="414.0" layoutY="466.0" mnemonicParsing="false" opacity="0.0" prefHeight="34.0" prefWidth="42.0" text="Button" />
+                  <Button fx:id="btRetirar9" layoutX="414.0" layoutY="466.0" mnemonicParsing="false" onAction="#retirarCotizacion" opacity="0.0" prefHeight="34.0" prefWidth="42.0" text="Button" />
+                  <Button fx:id="btModificar9" layoutX="159.0" layoutY="461.0" mnemonicParsing="false" onAction="#modificarCotizacion" opacity="0.0" prefHeight="34.0" prefWidth="42.0" text="Button" />
                   <ImageView disable="true" fitHeight="36.0" fitWidth="37.0" layoutX="504.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@imagenes/buscar.png" />
                      </image>
                   </ImageView>
-                  <ImageView disable="true" fitHeight="42.0" fitWidth="49.0" layoutX="159.0" layoutY="459.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView disable="true" fitHeight="42.0" fitWidth="49.0" layoutX="164.0" layoutY="459.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@imagenes/icons8-editar-archivo-48.png" />
                      </image>
                   </ImageView>
-                  <ImageView disable="true" fitHeight="52.0" fitWidth="46.0" layoutX="412.0" layoutY="461.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView disable="true" fitHeight="52.0" fitWidth="46.0" layoutX="412.0" layoutY="462.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@imagenes/icons8-borrar-para-siempre-48.png" />
                      </image>

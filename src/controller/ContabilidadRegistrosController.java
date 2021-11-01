@@ -25,6 +25,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.Empleado;
 import model.cliente;
 import model.cotizacion;
 import model.pdfCliente;
@@ -268,6 +269,112 @@ public class ContabilidadRegistrosController implements Initializable {
     @FXML
     private Button ButLimpiarCotizacionCalculo;
 
+    @FXML
+    private Button buttonLimpiarCotizacionG;
+
+
+    @FXML
+    void limpiarCotizacionGeneral(ActionEvent event) {
+
+        
+        tfFechaCotizacion.setValue(null);
+        tfCliente2.clear();
+        tfNombreCLiente3.clear();
+        tfEmail2.clear();
+        tfWtSapp2.clear();
+        tfTelefonoCliente2.clear();
+        tfTelefonoCliente1.clear();
+        tfBarrio1.clear();
+        tfCiudad2.clear();
+        tfDireccionCliente1.clear();
+        chMotivos1.getSelectionModel().clearSelection(); 
+        tfHomenajeado1.clear();
+        chParentezco1.getSelectionModel().clearSelection(); 
+        tfQuien1.clear();
+        chObsequio1.getSelectionModel().clearSelection(); 
+        tfCostoServicio1.setText("0");
+        tfPrecioSonido1.setText("0");
+        tfPreObsequio1.setText("0");
+        SpinnerValueFactory<Integer> valuesMusicos1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100);           
+        valuesMusicos1.setValue(0);
+        spCantidadMusicos1.setValueFactory(valuesMusicos1);
+        totalCotizacion.clear();
+        tfCotizacion1.clear();
+        tfTransporte.setText("0");
+        
+
+    }
+
+
+
+
+    @FXML
+    void buscarCotizacionGeneral(ActionEvent event) {
+
+
+        String datos;
+        String[] vector;
+         
+        if (tfCotizacion1.getLength() > 0 ){
+
+            datos = cotizacion.buscarCotizacionId(tfCotizacion1.getText());
+            vector = datos.split(",");
+            System.out.println(datos);
+
+            if (datos.equals("")){
+
+                Alert dialogoAlerta = new Alert(AlertType.ERROR);
+                dialogoAlerta.setTitle("ERROR EN LA VALIDACIÓN DE LA COTIZACION");
+                dialogoAlerta.setHeaderText("LA COTIZACION  #" + tfCotizacion1.getText() + " NO EXISTE");
+                dialogoAlerta.setContentText("Validar el numero correcto de la cotizacion");
+                dialogoAlerta.initStyle(StageStyle.UTILITY);
+                java.awt.Toolkit.getDefaultToolkit().beep();
+                dialogoAlerta.showAndWait();
+            }else{     
+                
+                               
+               tfCliente2.setText(vector[0]);
+               tfNombreCLiente3.setText(vector[1]);
+               tfEmail2.setText(vector[3]);
+               tfTelefonoCliente1.setText(vector[4]);
+               tfTelefonoCliente2.setText(vector[5]);           
+               tfWtSapp2.setText(vector[6]);
+               tfBarrio1.setText(vector[8]);
+               tfCiudad2.setText(vector[9]);
+               tfDireccionCliente1.setText(vector[10]);
+               chMotivos1.setValue(vector[11]);
+               tfHomenajeado1.setText(vector[12]);
+               chParentezco1.setValue(vector[13]);
+               tfQuien1.setText(vector[14]);
+               chObsequio1.setValue(vector[15]);
+               tfCostoServicio1.setText(vector[16]);
+               tfPrecioSonido1.setText(vector[17]);
+               tfPreObsequio1.setText(vector[18]);
+               tfTransporte.setText(vector[19]);
+               SpinnerValueFactory<Integer> ValuesspCantidadMusicos = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100);           
+               ValuesspCantidadMusicos.setValue(Integer.parseInt(vector[20]));
+               spCantidadMusicos1.setValueFactory(ValuesspCantidadMusicos);
+               tgButtonCotizacion.setText(vector[21]);
+               tfFechaCotizacion.setValue(Empleado.LocalDateStringConverter(vector[22])); 
+               totalCotizacion.setText(vector[23]);
+
+               if(tgButtonCotizacion.getText().equals("Activa")){               
+                tgButtonCotizacion.setStyle("-fx-background-color: #008000;");                       
+                                    
+                }else if(tgButtonCotizacion.getText().equals("Anulada")){
+                    tgButtonCotizacion.setStyle("-fx-background-color: #ff0000;");                   
+                }
+
+
+
+               
+               
+
+            }                
+         }   
+
+    }
+
 
     @FXML
     void calcularCotizacion(ActionEvent event) {
@@ -326,12 +433,14 @@ public class ContabilidadRegistrosController implements Initializable {
            String cantMusico = "'" + spCantidadMusicos1.getValue() + "'";
            String estado =  "'" + tgButtonCotizacion.getText() + "'";
            String transporte = "'" + tfTransporte.getText() + "'";
+           String total =  "'" + totalCotizacion.getText() + "'";
+           
            
           
 
            cotizacion ingCotizacion = new cotizacion (fechaCotizacion,idCliente,nombreCliente,emailCliente,
            wtCliente,telDosClie,telUnoClie,barrio,ciudad,direccion,motivo,homenajeado,parentezco,quien, 
-           obsequio,precioVenta,sonido,preObsequio,cantMusico,estado,transporte);
+           obsequio,precioVenta,sonido,preObsequio,cantMusico,estado,transporte,total);
             
            ingCotizacion.cargaCotizacion(); 
 
@@ -364,11 +473,14 @@ public class ContabilidadRegistrosController implements Initializable {
            chParentezco1.getSelectionModel().clearSelection(); 
            tfQuien1.clear();
            chObsequio1.getSelectionModel().clearSelection(); 
-           tfCostoServicio1.clear();
-           tfPrecioSonido1.clear();
-           tfPreObsequio1.clear();
+           tfCostoServicio1.setText("0");
+           tfPrecioSonido1.setText("0");
+           tfPreObsequio1.setText("0");
            SpinnerValueFactory<Integer> spCantidadMusicos1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100);           
            spCantidadMusicos1.setValue(0);
+           totalCotizacion.clear();
+           tfTransporte.setText("0");
+           tfCotizacion1.setText(cotizacion.idCotizacion()); 
            
                  
           
@@ -415,7 +527,7 @@ public class ContabilidadRegistrosController implements Initializable {
             ChMedio.getSelectionModel().clearSelection();       
             txWhatSapp.clear();
             txTelCliente1.clear();
-            TxDocIde1.clear();  
+            TxDocIde1.setText(cliente.idCliente()); 
            
 
     }
@@ -654,7 +766,7 @@ public class ContabilidadRegistrosController implements Initializable {
                
         }else{
             tgButtonCotizacion.setStyle("-fx-background-color: #ff0000;");
-            tgButtonCotizacion.setText("Inactiva");
+            tgButtonCotizacion.setText("Anulada");
 
         }
 
@@ -715,7 +827,9 @@ public class ContabilidadRegistrosController implements Initializable {
         spCantidadMusicos1.setValueFactory(ValueSpCantidadMusicos1);
         spCantidadMusicos11.setValueFactory(ValueSpCantidadMusicos2);
 
-        TxDocIde1.setText(cliente.idCliente());  
+        TxDocIde1.setText(cliente.idCliente()); 
+        tfCotizacion1.setText(cotizacion.idCotizacion()); 
+
        
        
     }

@@ -32,13 +32,14 @@ public class cotizacion extends ContabilidadRegistrosController{
     private String cantMusico;
     private String estado;
     private String transporte;
+    private String totalCotizacion;
 
 
     
     public cotizacion(String fechaCotizacion, String idCliente, String nombreCliente, String emailCliente,
             String wtCliente, String telDosClie, String telUnoClie, String barrio, String ciudad, String direccion,
             String motivo, String homenajeado, String parentezco, String quien, String obsequio, String precioVenta,
-            String sonido, String preObsequio, String cantMusico,String estado,String transporte) {
+            String sonido, String preObsequio, String cantMusico,String estado,String transporte, String totalCotizacion) {
         this.fechaCotizacion = fechaCotizacion;
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
@@ -60,14 +61,67 @@ public class cotizacion extends ContabilidadRegistrosController{
         this.cantMusico = cantMusico;
         this.estado = estado;
         this.transporte = transporte;
+        this.totalCotizacion = totalCotizacion;
     }
 
+    public static String idCotizacion(){
+    
+        String mostrar = "";
+        int res = 0;
+        String cadenaSQL = "Select * from cotizacion ORDER BY CotIdCotizacion DESC LIMIT 1";
+        try {
+            Connect objConexion = new Connect();    
+            Connection conn = objConexion.connect(); // devuelve el objeto conectado a la URL
+            Statement stmt =  conn.createStatement(); // permiten realizar consultas SQL en la B.D.
+    
+            ResultSet resultSet = stmt.executeQuery(cadenaSQL);
+            while (resultSet.next()) {
+              res = resultSet.getInt("CotIdCotizacion") + 1 ;
+            } 
+            
+            mostrar = String.valueOf(res);      
+                        
+            
+            conn.close();
+            stmt.close();
+            System.out.println("Encontrado.");            
+        } catch (Exception e) {
+            System.out.println(e.getMessage()); 
+        }                    
+            return mostrar;
+    }
+
+
+    public static String buscarCotizacionId(String id){
+    
+        String mostrar = "";
+        String cadenaSQL = "Select  * from clientes INNER JOIN cotizacion ON cotizacion.CotIdCliente = clientes.CliIdClientes  WHERE cotizacion.CotIdCotizacion =" + id  ;
+        try {
+            Connect objConexion = new Connect();    
+            Connection conn = objConexion.connect(); // devuelve el objeto conectado a la URL
+            Statement stmt =  conn.createStatement(); // permiten realizar consultas SQL en la B.D.
+    
+            ResultSet resultSet = stmt.executeQuery(cadenaSQL);
+            while (resultSet.next()) {
+              mostrar =  resultSet.getString("CliIdClientes") + "," +  resultSet.getString("CliNombres") + "," + resultSet.getString("CliDocIdentidad") + "," +   resultSet.getString("CliEmail") + "," + resultSet.getString("CliTelefonoUno") + "," + resultSet.getString("CliTelefonoDos") + "," +  resultSet.getString("CliWhatSapp") + "," + resultSet.getString("CliReferencias") + "," + resultSet.getString("CotBarrio") + "," + resultSet.getString("CotCiudad") +"," + resultSet.getString("CotDireccion") + "," + resultSet.getString("CotMotivo") + "," + resultSet.getString("CotHomenajeado") + "," + resultSet.getString("CotParentezco") +  "," + resultSet.getString("CotQuienObsequia") +  "," + resultSet.getString("CotObsequio") +  "," + resultSet.getString("CotPrecioVenta") +  "," + resultSet.getString("CotSonido") + "," + resultSet.getString("CotPrecioObsequio") + "," + resultSet.getString("CotTransporte") + "," + resultSet.getString("CotCantidadMusicos") + "," + resultSet.getString("CotEstado") + "," + resultSet.getString("CotFechaCotizacion") + "," + resultSet.getString("CotTotal") ;
+            }      
+                                  
+            
+            conn.close();
+            stmt.close();
+            System.out.println("Encontrado.");  
+            System.out.println(mostrar);            
+        } catch (Exception e) {
+            System.out.println(e.getMessage()); 
+        }                    
+            return mostrar;
+    }
 
     public void cargaCotizacion(){
       
           
                                                                                                                                                   
-        String cadenaSQL = "INSERT INTO cotizacion (CotIdCliente,CotFechaCotizacion,CotBarrio,CotCiudad,CotDireccion,CotMotivo,CotHomenajeado,CotParentezco,CotQuienObsequia,CotObsequio,CotPrecioVenta,CotSonido,CotPrecioObsequio,CotCantidadMusicos,CotEstado,CotTransporte) VALUES(" + idCliente + ","+fechaCotizacion+","+barrio+","+ciudad+","+direccion+","+motivo+","+homenajeado+" ,"+parentezco+","+quien+","+obsequio+","+precioVenta+","+sonido+","+preObsequio+","+cantMusico+", "+estado+" , "+transporte+")";
+        String cadenaSQL = "INSERT INTO cotizacion (CotIdCliente,CotFechaCotizacion,CotBarrio,CotCiudad,CotDireccion,CotMotivo,CotHomenajeado,CotParentezco,CotQuienObsequia,CotObsequio,CotPrecioVenta,CotSonido,CotPrecioObsequio,CotCantidadMusicos,CotEstado,CotTransporte, CotTotal) VALUES(" + idCliente + ","+fechaCotizacion+","+barrio+","+ciudad+","+direccion+","+motivo+","+homenajeado+" ,"+parentezco+","+quien+","+obsequio+","+precioVenta+","+sonido+","+preObsequio+","+cantMusico+", "+estado+" , "+transporte+" ," + totalCotizacion + ")";
           
         System.out.println(cadenaSQL);      
         try {
@@ -91,6 +145,20 @@ public class cotizacion extends ContabilidadRegistrosController{
 
 
 
+
+
+
+
+    public String getTotalCotizacion() {
+        return totalCotizacion;
+    }
+
+
+
+
+    public void setTotalCotizacion(String totalCotizacion) {
+        this.totalCotizacion = totalCotizacion;
+    }
 
 
 

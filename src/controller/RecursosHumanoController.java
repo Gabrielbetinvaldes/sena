@@ -331,6 +331,7 @@ public class RecursosHumanoController implements Initializable{
         tfDescuento.clear();
         tfCultural.clear();
         tfAhorro.clear();
+        IdNomina1.setText(nomina.idNomina());
     }
 
 
@@ -340,18 +341,25 @@ public class RecursosHumanoController implements Initializable{
     void liquidarNomina(ActionEvent event) {
 
         String cSerenatas = tfSerenatas.getText();
-        String vNomina = tfNomina.getText();
-        String salud = tfSalud.getText();
-        String  pension = tfPension.getText();
+        String vNomina = tfNomina.getText();     
         String descuentos = tfDescuento.getText();
         String cultural = tfCultural.getText();
         String ahorro = tfAhorro.getText();
 
-        int totalSerenatas = Integer.parseInt(cSerenatas) * Integer.parseInt(vNomina);
+        
+        double saludLiq = Double.parseDouble(vNomina) * 0.04;
+        double pensionLiq = Double.parseDouble(vNomina) * 0.04;
+ 
+        String total = String.valueOf( Double.parseDouble(vNomina)- (saludLiq  + Double.parseDouble(ahorro) + pensionLiq + Double.parseDouble(descuentos) +Double.parseDouble(cultural)));
 
-        String total = String.valueOf( totalSerenatas - (Integer.parseInt(salud) + Integer.parseInt(ahorro) + Integer.parseInt(pension) + Integer.parseInt(descuentos) + Integer.parseInt(cultural)));
+        int tSalud = (int)saludLiq; 
+        int tPension = (int)pensionLiq;
+        int tTotal = (int)Double.parseDouble(total);
 
-        tfTotal1.setText(total);
+
+        tfSalud.setText(String.valueOf(tSalud));
+        tfPension.setText(String.valueOf(tPension));
+        tfTotal1.setText(String.valueOf(tTotal));
         tfTotal1.setEditable(false);
 
 
@@ -606,6 +614,7 @@ public class RecursosHumanoController implements Initializable{
             chGenero1.getSelectionModel().clearSelection();                      
             dpFechaIngreso1.setValue(null);
             dpFechaNacimiento1.setValue(null);
+            tfIdEmpleado1.setText(Empleado.idEmpleado());
    
        
         

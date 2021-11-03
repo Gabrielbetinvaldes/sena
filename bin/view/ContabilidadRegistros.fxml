@@ -217,8 +217,8 @@
                         <Image url="@imagenes/icons8-borrar-para-siempre-48.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btImprimir9" layoutX="290.0" layoutY="466.0" mnemonicParsing="false" opacity="0.0" prefHeight="37.0" prefWidth="44.0" />
-                  <ImageView disable="true" fitHeight="46.0" fitWidth="51.0" layoutX="287.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="btImprimir9" layoutX="290.0" layoutY="466.0" mnemonicParsing="false" onAction="#imprimirCotizacion" opacity="0.0" prefHeight="37.0" prefWidth="44.0" />
+                  <ImageView disable="true" fitHeight="46.0" fitWidth="51.0" layoutX="289.0" layoutY="462.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@imagenes/icons8-enviar-a-la-impresora-48.png" />
                      </image>

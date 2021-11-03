@@ -29,6 +29,7 @@ import model.Empleado;
 import model.cliente;
 import model.cotizacion;
 import model.pdfCliente;
+import model.pdfCotizacion;
 import model.pdfNomina;
 
 public class ContabilidadRegistrosController implements Initializable {
@@ -273,7 +274,43 @@ public class ContabilidadRegistrosController implements Initializable {
     private Button buttonLimpiarCotizacionG;
 
 
+    @FXML
+    void imprimirCotizacion(ActionEvent event) throws FileNotFoundException, DocumentException {
 
+        
+        String fechaCotizacion= "" + tfFechaCotizacion.getValue();
+        String idCliente = tfCliente2.getText();
+        String nombreCliente =  tfNombreCLiente3.getText();
+        String emailCliente  =  tfEmail2.getText();
+        String wtCliente  =  tfWtSapp2.getText();
+        String telDosClie  = tfTelefonoCliente2.getText();
+        String telUnoClie = tfTelefonoCliente1.getText();
+        String barrio = tfBarrio1.getText();
+        String ciudad = tfCiudad2.getText();
+        String direccion= tfDireccionCliente1.getText();
+        String motivo =  chMotivos1.getValue();
+        String homenajeado = tfHomenajeado1.getText();
+        String parentezco = chParentezco1.getValue();
+        String quien =  tfQuien1.getText();
+        String obsequio = chObsequio1.getValue();
+        String precioVenta =  tfCostoServicio1.getText();
+        String sonido =  tfPrecioSonido1.getText();
+        String preObsequio=  tfPreObsequio1.getText();
+        String cantMusico = "" + spCantidadMusicos1.getValue();
+        String estado =  tgButtonCotizacion.getText();
+        String transporte = tfTransporte.getText();
+        String total =  totalCotizacion.getText();
+        String idCotizacion = tfCotizacion1.getText();
+
+   
+
+        pdfCotizacion certificado = new pdfCotizacion (fechaCotizacion,idCliente,nombreCliente,emailCliente,
+        wtCliente,telDosClie,telUnoClie,barrio,ciudad,direccion,motivo,homenajeado,parentezco,quien, 
+        obsequio,precioVenta,sonido,preObsequio,cantMusico,estado,transporte,total,idCotizacion);
+
+        certificado.imprimirCertificado();
+
+    }
 
     @FXML
     void retirarCotizacion(ActionEvent event) {

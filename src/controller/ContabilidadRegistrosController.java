@@ -3,11 +3,18 @@ package controller;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import com.itextpdf.text.DocumentException;
+import jfxtras.scene.control.LocalTimePicker;
+
+
+
+
 
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.event.ActionEvent;
@@ -20,6 +27,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBoxBase;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Alert.AlertType;
@@ -208,6 +216,9 @@ public class ContabilidadRegistrosController implements Initializable {
     @FXML
     private TextField tfQuien11;
 
+  
+
+
     @FXML
     private ChoiceBox<String> chParentezco11;
 
@@ -266,6 +277,8 @@ public class ContabilidadRegistrosController implements Initializable {
     @FXML
     private Button buttonCalculaCotiz;
 
+    @FXML
+    private LocalTimePicker horaSerenata;
 
     @FXML
     private Button ButLimpiarCotizacionCalculo;
@@ -301,12 +314,13 @@ public class ContabilidadRegistrosController implements Initializable {
         String transporte = tfTransporte.getText();
         String total =  totalCotizacion.getText();
         String idCotizacion = tfCotizacion1.getText();
+        String hora = "" + horaSerenata.getLocalTime() + "";
 
    
 
         pdfCotizacion certificado = new pdfCotizacion (fechaCotizacion,idCliente,nombreCliente,emailCliente,
         wtCliente,telDosClie,telUnoClie,barrio,ciudad,direccion,motivo,homenajeado,parentezco,quien, 
-        obsequio,precioVenta,sonido,preObsequio,cantMusico,estado,transporte,total,idCotizacion);
+        obsequio,precioVenta,sonido,preObsequio,cantMusico,estado,transporte,total,idCotizacion,hora);
 
         certificado.imprimirCertificado();
 
@@ -362,11 +376,13 @@ public class ContabilidadRegistrosController implements Initializable {
            String estado =  "'" + tgButtonCotizacion.getText() + "'";
            String transporte = "'" + tfTransporte.getText() + "'";
            String total =  "'" + totalCotizacion.getText() + "'";
+           String hora = "'" + horaSerenata.getLocalTime() + "'";
+           
 
 
            cotizacion ingCotizacion = new cotizacion (fechaCotizacion,idCliente,nombreCliente,emailCliente,
            wtCliente,telDosClie,telUnoClie,barrio,ciudad,direccion,motivo,homenajeado,parentezco,quien, 
-           obsequio,precioVenta,sonido,preObsequio,cantMusico,estado,transporte,total);
+           obsequio,precioVenta,sonido,preObsequio,cantMusico,estado,transporte,total,hora);
             
            ingCotizacion.editarCotizacion( "'" + tfCotizacion1.getText()+ "'"); 
    
@@ -481,7 +497,9 @@ public class ContabilidadRegistrosController implements Initializable {
                     tgButtonCotizacion.setStyle("-fx-background-color: #ff0000;");                   
                 }
 
-
+                horaSerenata.setLocalTime((Empleado.LocalTimeStringConverter(vector[24])));
+                
+                
 
                
                
@@ -550,13 +568,14 @@ public class ContabilidadRegistrosController implements Initializable {
            String estado =  "'" + tgButtonCotizacion.getText() + "'";
            String transporte = "'" + tfTransporte.getText() + "'";
            String total =  "'" + totalCotizacion.getText() + "'";
+           String hora = "'" + horaSerenata.getLocalTime() + "'";
            
-           
+          
           
 
            cotizacion ingCotizacion = new cotizacion (fechaCotizacion,idCliente,nombreCliente,emailCliente,
            wtCliente,telDosClie,telUnoClie,barrio,ciudad,direccion,motivo,homenajeado,parentezco,quien, 
-           obsequio,precioVenta,sonido,preObsequio,cantMusico,estado,transporte,total);
+           obsequio,precioVenta,sonido,preObsequio,cantMusico,estado,transporte,total,hora);
             
            ingCotizacion.cargaCotizacion(); 
 

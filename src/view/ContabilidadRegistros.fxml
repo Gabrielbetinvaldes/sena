@@ -48,8 +48,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import jfxtras.scene.control.LocalTimePicker?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="618.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ContabilidadRegistrosController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="618.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ContabilidadRegistrosController">
   <tabs>
     <Tab style="-fx-background-color: #10978F;" text="Registrar Cliente">
       <content>
@@ -181,7 +182,7 @@
                         <Image url="@imagenes/home.png" />
                      </image>
                   </ImageView>
-                  <DatePicker fx:id="tfFechaCotizacion" layoutX="98.0" layoutY="19.0" prefHeight="25.0" prefWidth="173.0" />
+                  <DatePicker fx:id="tfFechaCotizacion" layoutX="66.0" layoutY="19.0" prefHeight="25.0" prefWidth="104.0" />
                   <Label layoutX="26.0" layoutY="23.0" text="Fecha:" textFill="#655b15">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
@@ -327,7 +328,7 @@
                   <Spinner fx:id="spCantidadMusicos1" editable="true" layoutX="501.0" layoutY="390.0" prefHeight="25.0" prefWidth="77.0" />
                   <Separator layoutX="10.0" layoutY="429.0" prefHeight="4.0" prefWidth="600.0" />
                   <Separator layoutX="-8.0" layoutY="55.0" prefHeight="5.0" prefWidth="626.0" />
-                  <ToggleButton fx:id="tgButtonCotizacion" layoutX="289.0" layoutY="14.0" mnemonicParsing="false" onAction="#ButtonEstadoDoc" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #008000;" text="Activa" textFill="#fff6f6">
+                  <ToggleButton fx:id="tgButtonCotizacion" layoutX="327.0" layoutY="15.0" mnemonicParsing="false" onAction="#ButtonEstadoDoc" prefHeight="34.0" prefWidth="70.0" style="-fx-background-color: #008000;" text="Activa" textFill="#fff6f6">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -350,8 +351,8 @@
                      </font>
                   </Label>
                   <TextField fx:id="tfTransporte" layoutX="290.0" layoutY="390.0" prefHeight="25.0" prefWidth="80.0" text="0" />
-                  <TextField fx:id="totalCotizacion" layoutX="427.0" layoutY="19.0" prefHeight="25.0" prefWidth="118.0" />
-                  <Label layoutX="387.0" layoutY="23.0" text="Total:" textFill="#655b15">
+                  <TextField fx:id="totalCotizacion" layoutX="440.0" layoutY="19.0" prefHeight="25.0" prefWidth="100.0" />
+                  <Label layoutX="400.0" layoutY="23.0" text="Total:" textFill="#655b15">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
@@ -374,6 +375,12 @@
                         <Image url="@imagenes/limpiar.png" />
                      </image>
                   </ImageView>
+                  <Label layoutX="180.0" layoutY="23.0" text="Hora:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <LocalTimePicker fx:id="horaSerenata" accessibleRole="DATE_PICKER" layoutX="218.0" layoutY="15.0" prefHeight="32.0" prefWidth="88.0" />
                </children></AnchorPane>
       </content>
     </Tab>

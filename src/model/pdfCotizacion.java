@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javax.swing.JEditorPane;
@@ -17,9 +19,13 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+
+import javafx.util.StringConverter;
+
 import com.itextpdf.text.Image;
 
 import java.awt.Desktop;
@@ -52,13 +58,14 @@ public class pdfCotizacion {
     private String transporte;
     private String totalCotizacion;
     private String idCotizacion;
+    private String hora;
 
     
     public pdfCotizacion(String fechaCotizacion, String idCliente, String nombreCliente, String emailCliente,
             String wtCliente, String telDosClie, String telUnoClie, String barrio, String ciudad, String direccion,
             String motivo, String homenajeado, String parentezco, String quien, String obsequio, String precioVenta,
             String sonido, String preObsequio, String cantMusico, String estado, String transporte,
-            String totalCotizacion,String idCotizacion) {
+            String totalCotizacion,String idCotizacion, String hora) {
         this.fechaCotizacion = fechaCotizacion;
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
@@ -82,6 +89,7 @@ public class pdfCotizacion {
         this.transporte = transporte;
         this.totalCotizacion = totalCotizacion;
         this.idCotizacion = idCotizacion;
+        this.hora = hora;
     }
 
 
@@ -89,7 +97,8 @@ public class pdfCotizacion {
     public void  imprimirCertificado() throws FileNotFoundException, DocumentException{
 
         LocalDate hoy = LocalDate.now();
-                
+        
+               
             
         FileOutputStream archivo = new FileOutputStream("C:/Users/Gabokeybass/Desktop/Documentos/" + idCotizacion + ".pdf");
         Document documento = new Document();
@@ -107,16 +116,22 @@ public class pdfCotizacion {
             documento.add(image);//agrega la imagen al documento    
             
             Font fuente2= new Font();
-            fuente2.setSize(10);  
+            fuente2.setSize(10); 
+            fuente2.setColor(255,255,255); 
+
+
+            Font fuente3= new Font();
+            fuente3.setSize(8);
+             
             
             Paragraph parrafo1= new Paragraph("                                                Cotizacion No " +  idCotizacion +                    "                                        Fecha: "+ hoy);
             parrafo1.setAlignment(1); 
              
             
             Paragraph parrafo2= new Paragraph("______________________________________________________________________________"); 
-            Paragraph parrafo3= new Paragraph("Proveedor: Mariachi Pasion Mexicana                                               Nit:                1143122047-1  ",fuente2);
-            Paragraph parrafo4= new Paragraph("Ciudad:      Barranquilla                                                                      Telefono:          3016013248", fuente2    );
-            Paragraph parrafo5= new Paragraph("Email:        gerenciaBquilla@mariachipasionmexicana.co                 Direccion: Calle 46 # 6 c sur " ,fuente2   );  
+            Paragraph parrafo3= new Paragraph("Proveedor: Mariachi Pasion Mexicana                                                                             Nit:                1143122047-1  ",fuente3);
+            Paragraph parrafo4= new Paragraph("Ciudad:      Barranquilla                                                                                                    Telefono:          3016013248", fuente3    );
+            Paragraph parrafo5= new Paragraph("Email:        gerenciaBquilla@mariachipasionmexicana.co                                               Direccion: Calle 46 # 6 c sur " ,fuente3   );  
             Paragraph parrafo6= new Paragraph("______________________________________________________________________________"); 
      
 
@@ -134,29 +149,30 @@ public class pdfCotizacion {
             
             Font fuente= new Font();
             fuente.setSize(8);
+            
                  
-
+               
                  
         PdfPTable tablaDatosCliente = new PdfPTable(6);
         tablaDatosCliente.setWidthPercentage(100);
 
         PdfPCell clienteId = new PdfPCell(new Phrase("Id del cliente", fuente2));
-        clienteId.setBackgroundColor(BaseColor.ORANGE);  
+        clienteId.setBackgroundColor(BaseColor.RED);  
         clienteId.setBorder(PdfPCell.NO_BORDER);      
         PdfPCell clienteNombre= new PdfPCell(new Phrase("Nombres del cliente", fuente2));
-        clienteNombre.setBackgroundColor(BaseColor.ORANGE);
+        clienteNombre.setBackgroundColor(BaseColor.RED);
         clienteNombre.setBorder(PdfPCell.NO_BORDER); 
         PdfPCell clienteEmail = new PdfPCell(new Phrase("Email ", fuente2));
-        clienteEmail.setBackgroundColor(BaseColor.ORANGE);
+        clienteEmail.setBackgroundColor(BaseColor.RED);
         clienteEmail.setBorder(PdfPCell.NO_BORDER); 
         PdfPCell telefonoCliente= new PdfPCell(new Phrase("Telefono", fuente2));
-        telefonoCliente.setBackgroundColor(BaseColor.ORANGE);
+        telefonoCliente.setBackgroundColor(BaseColor.RED);
         telefonoCliente.setBorder(PdfPCell.NO_BORDER); 
         PdfPCell clienteCelular = new PdfPCell(new Phrase("Celular", fuente2));
-        clienteCelular.setBackgroundColor(BaseColor.ORANGE);
+        clienteCelular.setBackgroundColor(BaseColor.RED);
         clienteCelular.setBorder(PdfPCell.NO_BORDER); 
         PdfPCell clienteWt = new PdfPCell(new Phrase("Whatsapp", fuente2));
-        clienteWt.setBackgroundColor(BaseColor.ORANGE);
+        clienteWt.setBackgroundColor(BaseColor.RED);
         clienteWt.setBorder(PdfPCell.NO_BORDER); 
       
        
@@ -204,42 +220,40 @@ public class pdfCotizacion {
         tablaDatosCliente.addCell(identado);
         tablaDatosCliente.addCell(identado);
         tablaDatosCliente.addCell(identado);
-        tablaDatosCliente.addCell(identado);
-        tablaDatosCliente.addCell(identado);
-        tablaDatosCliente.addCell(identado);
-        tablaDatosCliente.addCell(identado);
-        tablaDatosCliente.addCell(identado);
-        tablaDatosCliente.addCell(identado);
-        tablaDatosCliente.addCell(identado);
-        tablaDatosCliente.addCell(identado);
-
+     
         
        
 
-        PdfPTable tablaDatosSerenata = new PdfPTable(7);
+        
+      
+        PdfPTable tablaDatosSerenata = new PdfPTable(8);
         tablaDatosSerenata.setWidthPercentage(100);
 
         PdfPCell celdaCiudad= new PdfPCell(new Phrase("Ciudad", fuente2));
-        celdaCiudad.setBackgroundColor(BaseColor.ORANGE);  
+        celdaCiudad.setBackgroundColor(BaseColor.RED);  
         celdaCiudad.setBorder(PdfPCell.NO_BORDER);      
         PdfPCell celdaBarrio= new PdfPCell(new Phrase("Barrio", fuente2));
-        celdaBarrio.setBackgroundColor(BaseColor.ORANGE);
+        celdaBarrio.setBackgroundColor(BaseColor.RED);
         celdaBarrio.setBorder(PdfPCell.NO_BORDER); 
         PdfPCell celdaDireccion = new PdfPCell(new Phrase("Direccion ", fuente2));
-        celdaDireccion.setBackgroundColor(BaseColor.ORANGE);
+        celdaDireccion.setBackgroundColor(BaseColor.RED);
         celdaDireccion.setBorder(PdfPCell.NO_BORDER); 
         PdfPCell celdaHomenajeada= new PdfPCell(new Phrase("Homenajeado(a)", fuente2));
-        celdaHomenajeada.setBackgroundColor(BaseColor.ORANGE);
+        celdaHomenajeada.setBackgroundColor(BaseColor.RED);
         celdaHomenajeada.setBorder(PdfPCell.NO_BORDER); 
+        PdfPCell celdaFecha1 = new PdfPCell(new Phrase("Fecha", fuente2));
+        celdaFecha1.setBackgroundColor(BaseColor.RED);
+        celdaFecha1.setBorder(PdfPCell.NO_BORDER);
         PdfPCell celdaHora = new PdfPCell(new Phrase("Hora", fuente2));
-        celdaHora.setBackgroundColor(BaseColor.ORANGE);
+        celdaHora.setBackgroundColor(BaseColor.RED);
         celdaHora.setBorder(PdfPCell.NO_BORDER); 
         PdfPCell celdaQuien = new PdfPCell(new Phrase("Responsable", fuente2));
-        celdaQuien.setBackgroundColor(BaseColor.ORANGE);
+        celdaQuien.setBackgroundColor(BaseColor.RED);
         celdaQuien.setBorder(PdfPCell.NO_BORDER); 
         PdfPCell celdaMotivo = new PdfPCell(new Phrase("Motivo", fuente2));
-        celdaMotivo.setBackgroundColor(BaseColor.ORANGE);
+        celdaMotivo.setBackgroundColor(BaseColor.RED);
         celdaMotivo.setBorder(PdfPCell.NO_BORDER); 
+        
 
         
        
@@ -248,6 +262,7 @@ public class pdfCotizacion {
         tablaDatosSerenata.addCell(celdaBarrio);
         tablaDatosSerenata.addCell(celdaDireccion );
         tablaDatosSerenata.addCell(celdaHomenajeada);
+        tablaDatosSerenata.addCell(celdaFecha1 );
         tablaDatosSerenata.addCell(celdaHora );
         tablaDatosSerenata.addCell(celdaQuien);
         tablaDatosSerenata.addCell(celdaMotivo);
@@ -262,31 +277,164 @@ public class pdfCotizacion {
         celdaDireccion2.setBorder(PdfPCell.NO_BORDER); 
         PdfPCell celdaHomenajeada2= new PdfPCell(new Phrase(homenajeado,fuente));        
         celdaHomenajeada2.setBorder(PdfPCell.NO_BORDER); 
-        PdfPCell celdaHora2 = new PdfPCell(new Phrase("10:00 AM",fuente));       
+        PdfPCell celdaFecha = new PdfPCell(new Phrase(fechaCotizacion,fuente));        
+        celdaFecha.setBorder(PdfPCell.NO_BORDER); 
+        PdfPCell celdaHora2 = new PdfPCell(new Phrase(hora,fuente));       
         celdaHora2.setBorder(PdfPCell.NO_BORDER); 
         PdfPCell celdaQuien2= new PdfPCell(new Phrase(quien,fuente));        
         celdaQuien2.setBorder(PdfPCell.NO_BORDER);
-        PdfPCell celdaMotivo2 = new PdfPCell(new Phrase(motivo, fuente2));
+        PdfPCell celdaMotivo2 = new PdfPCell(new Phrase(motivo, fuente));
         celdaMotivo2.setBorder(PdfPCell.NO_BORDER);  
 
-
+        
         tablaDatosSerenata.addCell(celdaCiudad2);
         tablaDatosSerenata.addCell(celdaBarrio2);
         tablaDatosSerenata.addCell(celdaDireccion2);
         tablaDatosSerenata.addCell(celdaHomenajeada2);
+        tablaDatosSerenata.addCell(celdaFecha);
         tablaDatosSerenata.addCell(celdaHora2);
         tablaDatosSerenata.addCell(celdaQuien2);
         tablaDatosSerenata.addCell(celdaMotivo2);
 
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
+        tablaDatosSerenata.addCell(identado);
 
+        PdfPTable tablaCostosSerenata = new PdfPTable(2);
+        tablaCostosSerenata.setWidthPercentage(100);
 
-       
-       
-       
-               
-        documento.add(tablaDatosCliente);        
+        PdfPCell celdaConcepto= new PdfPCell(new Phrase("Concepto", fuente2));
+        celdaConcepto.setBackgroundColor(BaseColor.RED);  
+        celdaConcepto.setBorder(PdfPCell.NO_BORDER);      
+        PdfPCell celdaValor= new PdfPCell(new Phrase("Valor", fuente2));
+        celdaValor.setBackgroundColor(BaseColor.RED);
+        celdaValor.setBorder(PdfPCell.NO_BORDER); 
         
-        documento.add(tablaDatosSerenata);      
+
+        tablaCostosSerenata.addCell(celdaConcepto);
+        tablaCostosSerenata.addCell(celdaValor);
+
+        PdfPCell celdaConcepto1 = new PdfPCell(new Phrase("Precio de Venta" , fuente));        
+        celdaConcepto1.setBorder(PdfPCell.NO_BORDER);           
+        PdfPCell celdaValor1 = new PdfPCell(new Phrase(precioVenta, fuente));        
+        celdaValor1.setBorder(PdfPCell.NO_BORDER); 
+        PdfPCell celdaConcepto2 = new PdfPCell(new Phrase("Transporte", fuente));        
+        celdaConcepto2.setBorder(PdfPCell.NO_BORDER);           
+        PdfPCell celdaValor2 = new PdfPCell(new Phrase(transporte, fuente));        
+        celdaValor2.setBorder(PdfPCell.NO_BORDER); 
+        PdfPCell celdaConcepto3 = new PdfPCell(new Phrase("Sonido", fuente));        
+        celdaConcepto3.setBorder(PdfPCell.NO_BORDER);           
+        PdfPCell celdaValor3 = new PdfPCell(new Phrase(sonido, fuente));        
+        celdaValor3.setBorder(PdfPCell.NO_BORDER); 
+        PdfPCell celdaConcepto4 = new PdfPCell(new Phrase(obsequio, fuente));        
+        celdaConcepto4.setBorder(PdfPCell.NO_BORDER);           
+        PdfPCell celdaValor4 = new PdfPCell(new Phrase(preObsequio, fuente));        
+        celdaValor4.setBorder(PdfPCell.NO_BORDER); 
+
+
+
+
+        
+        
+        tablaCostosSerenata.addCell(celdaConcepto1);        
+        tablaCostosSerenata.addCell(celdaValor1);
+        tablaCostosSerenata.addCell(identado);
+        tablaCostosSerenata.addCell(identado);
+        tablaCostosSerenata.addCell(celdaConcepto2);        
+        tablaCostosSerenata.addCell(celdaValor2);
+        tablaCostosSerenata.addCell(identado);
+        tablaCostosSerenata.addCell(identado);
+        tablaCostosSerenata.addCell(celdaConcepto3);        
+        tablaCostosSerenata.addCell(celdaValor3);
+        tablaCostosSerenata.addCell(identado);
+        tablaCostosSerenata.addCell(identado);
+        tablaCostosSerenata.addCell(celdaConcepto4);        
+        tablaCostosSerenata.addCell(celdaValor4);
+        tablaCostosSerenata.addCell(identado);
+        tablaCostosSerenata.addCell(identado);
+       
+
+      
+
+
+        PdfPTable tablaTotalSerenata = new PdfPTable(2);
+        tablaTotalSerenata.setWidthPercentage(100);
+
+        PdfPCell celdaTotales= new PdfPCell(new Phrase("TOTAL", fuente3));
+        celdaTotales.setBackgroundColor(BaseColor.ORANGE);  
+        celdaTotales.setBorder(PdfPCell.NO_BORDER);      
+        PdfPCell celdaValorTotales= new PdfPCell(new Phrase(totalCotizacion, fuente3));
+        celdaValorTotales.setBackgroundColor(BaseColor.ORANGE);
+        celdaValorTotales.setBorder(PdfPCell.NO_BORDER); 
+        
+
+        tablaTotalSerenata.addCell(celdaTotales);
+        tablaTotalSerenata.addCell(celdaValorTotales);
+       
+       
+        Paragraph parrafo7= new Paragraph("                                                                DATOS DEL CLIENTE"); 
+        documento.add(parrafo7);
+        parrafo7.setAlignment(1); 
+        documento.add(new Paragraph("\n"));
+        
+               
+        documento.add(tablaDatosCliente);  
+        
+        Paragraph parrafo8= new Paragraph("                                                                DATOS DE LA SERENATA"); 
+        documento.add(parrafo8);
+        parrafo8.setAlignment(1); 
+        documento.add(new Paragraph("\n"));
+                
+        
+        documento.add(tablaDatosSerenata);   
+        
+        
+        
+        Paragraph parrafo9= new Paragraph("                                                                 COSTOS DEL SERVICIO"); 
+        documento.add(parrafo9);
+        parrafo9.setAlignment(1);
+        documento.add(new Paragraph("\n"));    
+
+        documento.add(tablaCostosSerenata);   
+        
+        
+
+       
+
+
+        documento.add(tablaTotalSerenata);     
+
+        Paragraph parrafo10= new Paragraph("__________________________" +  "\n"); 
+        Paragraph parrafo11= new Paragraph("Richard Lindarte Antolinez" +  "\n"); 
+        Paragraph parrafo12= new Paragraph("Representante Legal"  +  "\n"); 
+        Paragraph parrafo13= new Paragraph("Nit. 1143122047-1 "  +  "\n"); 
+
+       
+
+        documento.add(new Paragraph("\n")); 
+        documento.add(new Paragraph("\n")); 
+        documento.add(new Paragraph("\n")); 
+        documento.add(new Paragraph("\n")); 
+       
+
+        documento.add(parrafo10);
+        documento.add(parrafo11);
+        documento.add(parrafo12);
+        documento.add(parrafo13);
 
 
 
@@ -304,6 +452,18 @@ public class pdfCotizacion {
 
     }
 
+
+
+
+    public String getHora() {
+        return hora;
+    }
+
+
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
 
 
 

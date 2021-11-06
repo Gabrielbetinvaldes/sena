@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import connection.Connect;
 import controller.RecursosHumanoController;
@@ -102,6 +103,17 @@ public static LocalDate LocalDateStringConverter(String string) {
 
 
 return fecha;
+
+
+}
+
+
+public static LocalTime LocalTimeStringConverter(String string) {
+
+    LocalTime hora = LocalTime.parse(string);
+
+
+return hora;
 }
 
 public static String idEmpleado(){

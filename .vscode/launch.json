@@ -15,7 +15,7 @@
             "name": "Launch app",
             "request": "launch",
             "mainClass": "app",
-            "vmArgs": "--module-path C:\\javafx-sdk-11.0.2\\lib --add-modules javafx.controls,javafx.fxml", 
+            "vmArgs": "--module-path C:\\javafx-sdk-11.0.2\\lib --add-modules javafx.controls,javafx.fxml",
             "projectName": "MPM_be060dbe"
         }
     ]

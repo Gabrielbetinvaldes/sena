@@ -418,7 +418,7 @@
                   <TextField fx:id="tfCotizacion11" layoutX="429.0" layoutY="77.0" prefHeight="25.0" prefWidth="80.0" />
                   <Button fx:id="btBuscar91" layoutX="518.0" layoutY="72.0" mnemonicParsing="false" onAction="#buscarCotizacionGeneralFactura" opacity="0.0" prefHeight="34.0" prefWidth="42.0" text="Button" />
                   <Button fx:id="btModificar91" layoutX="141.0" layoutY="477.0" mnemonicParsing="false" onAction="#modificarFactura" opacity="0.0" prefHeight="34.0" prefWidth="42.0" text="Button" />
-                  <Button fx:id="btRetirar91" layoutX="373.0" layoutY="478.0" mnemonicParsing="false" onAction="#retirarFactura" opacity="0.0" prefHeight="34.0" prefWidth="42.0" text="Button" />
+                  <Button fx:id="btRetirar91" layoutX="394.0" layoutY="479.0" mnemonicParsing="false" onAction="#retirarFactura" opacity="0.0" prefHeight="34.0" prefWidth="42.0" text="Button" />
                   <ImageView disable="true" fitHeight="36.0" fitWidth="37.0" layoutX="522.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@imagenes/buscar.png" />
@@ -429,13 +429,13 @@
                         <Image url="@imagenes/icons8-editar-archivo-48.png" />
                      </image>
                   </ImageView>
-                  <ImageView disable="true" fitHeight="47.0" fitWidth="44.0" layoutX="384.0" layoutY="472.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView disable="true" fitHeight="47.0" fitWidth="44.0" layoutX="393.0" layoutY="472.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@imagenes/icons8-borrar-para-siempre-48.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btImprimir91" layoutX="248.0" layoutY="476.0" mnemonicParsing="false" opacity="0.0" prefHeight="37.0" prefWidth="44.0" />
-                  <ImageView disable="true" fitHeight="46.0" fitWidth="51.0" layoutX="247.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="btImprimir91" layoutX="275.0" layoutY="478.0" mnemonicParsing="false" onAction="#imprimirFactura" opacity="0.0" prefHeight="37.0" prefWidth="44.0" />
+                  <ImageView disable="true" fitHeight="46.0" fitWidth="51.0" layoutX="274.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@imagenes/icons8-enviar-a-la-impresora-48.png" />
                      </image>
@@ -445,7 +445,7 @@
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="tfNombreCLiente31" layoutX="134.0" layoutY="110.0" prefHeight="25.0" prefWidth="443.0" />
+                  <TextField fx:id="tfNombreCLiente31" layoutX="134.0" layoutY="110.0" prefHeight="25.0" prefWidth="261.0" />
                   <Label layoutX="28.0" layoutY="150.0" text="Email:" textFill="#655b15">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
@@ -586,6 +586,12 @@
                         <Image url="@imagenes/borrar.png" />
                      </image>
                   </ImageView>
+                  <Label layoutX="407.0" layoutY="114.0" text="Id Cliente:" textFill="#655b15">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="idClienteFactura" layoutX="469.0" layoutY="111.0" prefHeight="25.0" prefWidth="104.0" />
                </children>
             </AnchorPane>
          </content>

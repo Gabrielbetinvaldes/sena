@@ -39,6 +39,7 @@ import model.cotizacion;
 import model.factura;
 import model.pdfCliente;
 import model.pdfCotizacion;
+import model.pdfFactura;
 import model.pdfNomina;
 
 public class ContabilidadRegistrosController implements Initializable {
@@ -303,8 +304,53 @@ public class ContabilidadRegistrosController implements Initializable {
     @FXML
     private Button buttonLimpiarCotizacionG;
 
+    @FXML
+    private TextField idClienteFactura;
 
 
+
+
+
+    @FXML
+    void imprimirFactura(ActionEvent event) throws FileNotFoundException, DocumentException {
+
+        String fechaCotizacion= "" + tfFechaCotizacion2.getValue();
+        String idCliente = idClienteFactura.getText();
+        String nombreCliente =  tfNombreCLiente31.getText();
+        String emailCliente  =  tfEmail21.getText();
+        String wtCliente  =  tfWtSapp21.getText();
+        String telDosClie  = tfTelefonoCliente21.getText();
+        String telUnoClie = tfTelefonoCliente11.getText();
+        String barrio = tfBarrio11.getText();
+        String ciudad = tfCiudad21.getText();
+        String direccion= tfDireccionCliente11.getText();
+        String motivo =  chMotivos11.getValue();
+        String homenajeado = tfHomenajeado11.getText();
+        String parentezco = chParentezco11.getValue();
+        String quien =  tfQuien11.getText();
+        String obsequio = chObsequio11.getValue();
+        String precioVenta =  tfCostoServicio11.getText();
+        String sonido =  tfPrecioSonido11.getText();
+        String preObsequio=  tfPreObsequio11.getText();
+        String cantMusico = "" + spCantidadMusicos11.getValue();
+        String estado =  tgButtonCotizacion.getText();
+        String transporte = transporteFactura.getText();
+        String total =  totalFactura.getText();
+        String idCotizacion = tfCotizacion11.getText();
+        String hora = "" + horaSerenata2.getLocalTime() + "";
+        String idfacturacion = tfIdFactura.getText();
+
+   
+
+        pdfFactura certificado = new pdfFactura (fechaCotizacion,idCliente,nombreCliente,emailCliente,
+        wtCliente,telDosClie,telUnoClie,barrio,ciudad,direccion,motivo,homenajeado,parentezco,quien, 
+        obsequio,precioVenta,sonido,preObsequio,cantMusico,estado,transporte,total,idCotizacion,hora,idfacturacion);
+
+        certificado.imprimirCertificado();
+
+
+
+    }
 
 
 
@@ -366,7 +412,7 @@ public class ContabilidadRegistrosController implements Initializable {
             tfCotizacion11.clear();
             transporteFactura.setText("0");
             tfIdFactura.setText(factura.idFactura());
-
+            idClienteFactura.clear();
            
 
     }
@@ -508,6 +554,7 @@ public class ContabilidadRegistrosController implements Initializable {
         tfCotizacion11.clear();
         transporteFactura.setText("0");
         tfIdFactura.setText(factura.idFactura());
+        idClienteFactura.clear();
 
     }
 
@@ -661,6 +708,7 @@ public class ContabilidadRegistrosController implements Initializable {
         totalFactura.clear();
         tfCotizacion11.clear();
         transporteFactura.setText("0");
+        idClienteFactura.clear();
 
               
 
@@ -694,6 +742,7 @@ public class ContabilidadRegistrosController implements Initializable {
         totalFactura.clear();
         tfCotizacion11.clear();
         transporteFactura.setText("0");
+        idClienteFactura.clear();
 
               
 
@@ -724,7 +773,7 @@ public class ContabilidadRegistrosController implements Initializable {
             }else{     
                 
                                
-               
+               idClienteFactura.setText(vector[0]);
                tfNombreCLiente31.setText(vector[1]);
                tfEmail21.setText(vector[3]);
                tfTelefonoCliente11.setText(vector[4]);
@@ -792,7 +841,7 @@ public class ContabilidadRegistrosController implements Initializable {
                 dialogoAlerta.showAndWait();
             }else{     
                 
-                               
+               idClienteFactura.setText(vector[0]);                
                tfCotizacion11.setText(vector2[0]);
                tfNombreCLiente31.setText(vector[1]);
                tfEmail21.setText(vector[3]);

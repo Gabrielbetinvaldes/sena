@@ -33,7 +33,7 @@ import java.awt.Desktop;
 
 
 
-public class pdfCotizacion {
+public class pdfFactura{
 
     private String fechaCotizacion;
     private String idCliente;
@@ -59,14 +59,14 @@ public class pdfCotizacion {
     private String totalCotizacion;
     private String idCotizacion;
     private String hora;
-    
+    private String idFactura;
 
     
-    public pdfCotizacion(String fechaCotizacion, String idCliente, String nombreCliente, String emailCliente,
+    public pdfFactura(String fechaCotizacion, String idCliente, String nombreCliente, String emailCliente,
             String wtCliente, String telDosClie, String telUnoClie, String barrio, String ciudad, String direccion,
             String motivo, String homenajeado, String parentezco, String quien, String obsequio, String precioVenta,
             String sonido, String preObsequio, String cantMusico, String estado, String transporte,
-            String totalCotizacion,String idCotizacion, String hora) {
+            String totalCotizacion,String idCotizacion, String hora, String idFactura) {
         this.fechaCotizacion = fechaCotizacion;
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
@@ -91,6 +91,7 @@ public class pdfCotizacion {
         this.totalCotizacion = totalCotizacion;
         this.idCotizacion = idCotizacion;
         this.hora = hora;
+        this.idFactura = idFactura;
     }
 
 
@@ -101,7 +102,7 @@ public class pdfCotizacion {
         
                
             
-        FileOutputStream archivo = new FileOutputStream("C:/Users/Gabokeybass/Desktop/Documentos/" + idCotizacion + ".pdf");
+        FileOutputStream archivo = new FileOutputStream("C:/Users/Gabokeybass/Desktop/Documentos/" + idFactura + ".pdf");
         Document documento = new Document();
         PdfWriter.getInstance(documento, archivo);
         documento.open();
@@ -125,7 +126,7 @@ public class pdfCotizacion {
             fuente3.setSize(10);
              
             
-            Paragraph parrafo1= new Paragraph("                                                Cotizacion No " +  idCotizacion +                    "                                        Fecha: "+ hoy);
+            Paragraph parrafo1= new Paragraph("                                                Factura No " +  idFactura +                     "                                        Fecha: "+ hoy);
             parrafo1.setAlignment(1); 
              
             
@@ -227,7 +228,7 @@ public class pdfCotizacion {
 
         
       
-        PdfPTable tablaDatosSerenata = new PdfPTable(8);
+        PdfPTable tablaDatosSerenata = new PdfPTable(9);
         tablaDatosSerenata.setWidthPercentage(100);
 
         PdfPCell celdaCiudad= new PdfPCell(new Phrase("Ciudad", fuente2));
@@ -254,6 +255,9 @@ public class pdfCotizacion {
         PdfPCell celdaMotivo = new PdfPCell(new Phrase("Motivo", fuente2));
         celdaMotivo.setBackgroundColor(BaseColor.RED);
         celdaMotivo.setBorder(PdfPCell.NO_BORDER); 
+        PdfPCell celdaCotizacion = new PdfPCell(new Phrase("Cotizacion", fuente2));
+        celdaCotizacion.setBackgroundColor(BaseColor.RED);
+        celdaCotizacion.setBorder(PdfPCell.NO_BORDER); 
         
 
         
@@ -267,6 +271,7 @@ public class pdfCotizacion {
         tablaDatosSerenata.addCell(celdaHora );
         tablaDatosSerenata.addCell(celdaQuien);
         tablaDatosSerenata.addCell(celdaMotivo);
+        tablaDatosSerenata.addCell(celdaCotizacion);
 
         
 
@@ -286,6 +291,8 @@ public class pdfCotizacion {
         celdaQuien2.setBorder(PdfPCell.NO_BORDER);
         PdfPCell celdaMotivo2 = new PdfPCell(new Phrase(motivo, fuente));
         celdaMotivo2.setBorder(PdfPCell.NO_BORDER);  
+        PdfPCell celdaCotizacion2 = new PdfPCell(new Phrase(idCotizacion, fuente));
+        celdaCotizacion2 .setBorder(PdfPCell.NO_BORDER); 
 
         
         tablaDatosSerenata.addCell(celdaCiudad2);
@@ -296,6 +303,7 @@ public class pdfCotizacion {
         tablaDatosSerenata.addCell(celdaHora2);
         tablaDatosSerenata.addCell(celdaQuien2);
         tablaDatosSerenata.addCell(celdaMotivo2);
+        tablaDatosSerenata.addCell(celdaCotizacion2 );
 
         tablaDatosSerenata.addCell(identado);
         tablaDatosSerenata.addCell(identado);
@@ -441,7 +449,7 @@ public class pdfCotizacion {
 
             documento.close();
 
-            File path = new File("C:/Users/Gabokeybass/Desktop/Documentos/" +  idCotizacion + ".pdf");
+            File path = new File("C:/Users/Gabokeybass/Desktop/Documentos/" +  idFactura + ".pdf");
             try {
                 Desktop.getDesktop().open(path);
             } catch (IOException e) {
@@ -453,6 +461,18 @@ public class pdfCotizacion {
 
     }
 
+
+
+
+    public String getIdFactura() {
+        return idFactura;
+    }
+
+
+
+    public void setIdFactura(String idFactura) {
+        this.idFactura = idFactura;
+    }
 
 
 

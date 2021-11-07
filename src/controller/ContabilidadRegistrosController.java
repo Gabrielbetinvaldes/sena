@@ -306,6 +306,10 @@ public class ContabilidadRegistrosController implements Initializable {
 
 
 
+
+
+
+
     @FXML
     void crearFactura(ActionEvent event) {
 
@@ -428,8 +432,119 @@ public class ContabilidadRegistrosController implements Initializable {
         java.awt.Toolkit.getDefaultToolkit().beep();
         dialogoAlerta1.showAndWait();
 
+
+        tfFechaCotizacion.setValue(null);
+        tfCliente2.clear();
+        tfNombreCLiente3.clear();
+        tfEmail2.clear();
+        tfWtSapp2.clear();
+        tfTelefonoCliente2.clear();
+        tfTelefonoCliente1.clear();
+        tfBarrio1.clear();
+        tfCiudad2.clear();
+        tfDireccionCliente1.clear();
+        chMotivos1.getSelectionModel().clearSelection(); 
+        tfHomenajeado1.clear();
+        chParentezco1.getSelectionModel().clearSelection(); 
+        tfQuien1.clear();
+        chObsequio1.getSelectionModel().clearSelection(); 
+        tfCostoServicio1.setText("0");
+        tfPrecioSonido1.setText("0");
+        tfPreObsequio1.setText("0");
+        SpinnerValueFactory<Integer> spCantidadMusicos1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100);           
+        spCantidadMusicos1.setValue(0);
+        totalCotizacion.clear();
+        tfTransporte.setText("0");
+        tfCotizacion1.setText(cotizacion.idCotizacion()); 
+
     }
 
+
+    @FXML
+    void retirarFactura(ActionEvent event) {
+
+        Alert dialogoAlerta = new Alert(AlertType.CONFIRMATION);
+        dialogoAlerta.setTitle("ELIMINAR FACTURA");
+        dialogoAlerta.setHeaderText("Desea eliminar un registro de la base de datos?");           
+        dialogoAlerta.initStyle(StageStyle.UTILITY);
+        java.awt.Toolkit.getDefaultToolkit().beep();
+        dialogoAlerta.showAndWait();
+
+   
+
+        factura.eliminarFactura(tfIdFactura.getText());
+
+        Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+        dialogoAlerta1.setTitle("ELIMINAR FACTURA");
+        dialogoAlerta1.setHeaderText("Operacion exitosa");           
+        dialogoAlerta1.initStyle(StageStyle.UTILITY);
+        java.awt.Toolkit.getDefaultToolkit().beep();
+        dialogoAlerta1.showAndWait();
+
+
+
+
+        tfFechaCotizacion2.setValue(null);        
+        tfNombreCLiente31.clear();
+        tfEmail21.clear();
+        tfWtSapp21.clear();
+        tfTelefonoCliente21.clear();
+        tfTelefonoCliente11.clear();
+        tfBarrio11.clear();
+        tfCiudad21.clear();
+        tfDireccionCliente11.clear();
+        chMotivos11.getSelectionModel().clearSelection(); 
+        tfHomenajeado11.clear();
+        chParentezco11.getSelectionModel().clearSelection(); 
+        tfQuien11.clear();
+        chObsequio11.getSelectionModel().clearSelection(); 
+        tfCostoServicio11.setText("0");
+        tfPrecioSonido11.setText("0");
+        tfPreObsequio11.setText("0");
+        SpinnerValueFactory<Integer> valuesMusicos1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100);           
+        valuesMusicos1.setValue(0);
+        spCantidadMusicos11.setValueFactory(valuesMusicos1);
+        totalFactura.clear();
+        tfCotizacion11.clear();
+        transporteFactura.setText("0");
+        tfIdFactura.setText(factura.idFactura());
+
+    }
+
+    @FXML
+    void modificarFactura(ActionEvent event) {
+
+
+       
+        String fechaFactura= "'" + tfFechaCotizacion2.getValue() + "'";
+        String idCotizacion = "'" + tfCotizacion11.getText() + "'";           
+        String estado =  "'" + tgButtonFactura.getText() + "'";
+        
+        factura ingFactura = new factura (fechaFactura,idCotizacion,estado);
+            
+        ingFactura.editarFactura("'" + tfIdFactura.getText()+ "'"); 
+           
+
+              
+        
+   
+          
+           Alert dialogoAlerta = new Alert(AlertType.CONFIRMATION);
+            dialogoAlerta.setTitle("MODIFICAR FACTURA");
+            dialogoAlerta.setHeaderText("Desea modificar la factura?");           
+            dialogoAlerta.initStyle(StageStyle.UTILITY);
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            dialogoAlerta.showAndWait();
+
+            Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+            dialogoAlerta1.setTitle("MODIFICAR FACTURA");
+            dialogoAlerta1.setHeaderText("Operacion exitosa");           
+            dialogoAlerta1.initStyle(StageStyle.UTILITY);
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            dialogoAlerta1.showAndWait();
+
+
+    }
 
     @FXML
     void modificarCotizacion(ActionEvent event) {
@@ -551,7 +666,38 @@ public class ContabilidadRegistrosController implements Initializable {
 
     }
 
+    @FXML
+    void limpiarFactura(ActionEvent event) {
 
+        tfIdFactura.clear();
+        tfCotizacion11.clear();
+        tfFechaCotizacion2.setValue(null);        
+        tfNombreCLiente31.clear();
+        tfEmail21.clear();
+        tfWtSapp21.clear();
+        tfTelefonoCliente21.clear();
+        tfTelefonoCliente11.clear();
+        tfBarrio11.clear();
+        tfCiudad21.clear();
+        tfDireccionCliente11.clear();
+        chMotivos11.getSelectionModel().clearSelection(); 
+        tfHomenajeado11.clear();
+        chParentezco11.getSelectionModel().clearSelection(); 
+        tfQuien11.clear();
+        chObsequio11.getSelectionModel().clearSelection(); 
+        tfCostoServicio11.setText("0");
+        tfPrecioSonido11.setText("0");
+        tfPreObsequio11.setText("0");
+        SpinnerValueFactory<Integer> valuesMusicos1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100);           
+        valuesMusicos1.setValue(0);
+        spCantidadMusicos11.setValueFactory(valuesMusicos1);
+        totalFactura.clear();
+        tfCotizacion11.clear();
+        transporteFactura.setText("0");
+
+              
+
+    }
 
     @FXML
     void buscarCotizacionGeneralFactura(ActionEvent event) {
@@ -599,8 +745,77 @@ public class ContabilidadRegistrosController implements Initializable {
                SpinnerValueFactory<Integer> ValuesspCantidadMusicos = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100);           
                ValuesspCantidadMusicos.setValue(Integer.parseInt(vector[20]));
                spCantidadMusicos11.setValueFactory(ValuesspCantidadMusicos);
-               tgButtonFactura.setText(vector[21]);
+               
                tfFechaCotizacion2.setValue(Empleado.LocalDateStringConverter(vector[22])); 
+               totalFactura.setText(vector[23]);
+               horaSerenata2.setLocalTime((Empleado.LocalTimeStringConverter(vector[24])));
+                
+                              
+               
+
+            }                
+         }   
+
+    }
+
+    
+    @FXML
+    void buscarFactura(ActionEvent event) {
+
+
+        String datos;
+        String[] vector;
+        String datos2;
+        String[] vector2;
+         
+        if (tfIdFactura.getLength() > 0 ){
+
+     
+
+            datos2 = factura.buscarFacturaId(tfIdFactura.getText());
+            vector2 = datos2.split(",");
+
+            datos = cotizacion.buscarCotizacionId(vector2[0]);
+            vector = datos.split(",");
+            System.out.println(datos);
+
+            
+
+            if (datos2.equals("")){
+
+                Alert dialogoAlerta = new Alert(AlertType.ERROR);
+                dialogoAlerta.setTitle("ERROR EN LA VALIDACIÓN DE LA FACTURA");
+                dialogoAlerta.setHeaderText("LA COTIZACION  #" + tfIdFactura.getText() + " NO EXISTE");
+                dialogoAlerta.setContentText("Validar el numero correcto de la factura");
+                dialogoAlerta.initStyle(StageStyle.UTILITY);
+                java.awt.Toolkit.getDefaultToolkit().beep();
+                dialogoAlerta.showAndWait();
+            }else{     
+                
+                               
+               tfCotizacion11.setText(vector2[0]);
+               tfNombreCLiente31.setText(vector[1]);
+               tfEmail21.setText(vector[3]);
+               tfTelefonoCliente11.setText(vector[4]);
+               tfTelefonoCliente21.setText(vector[5]);           
+               tfWtSapp21.setText(vector[6]);
+               tfBarrio11.setText(vector[8]);
+               tfCiudad21.setText(vector[9]);
+               tfDireccionCliente11.setText(vector[10]);
+               chMotivos11.setValue(vector[11]);
+               tfHomenajeado11.setText(vector[12]);
+               chParentezco11.setValue(vector[13]);
+               tfQuien11.setText(vector[14]);
+               chObsequio11.setValue(vector[15]);
+               tfCostoServicio11.setText(vector[16]);
+               tfPrecioSonido11.setText(vector[17]);
+               tfPreObsequio11.setText(vector[18]);
+               transporteFactura.setText(vector[19]);
+               SpinnerValueFactory<Integer> ValuesspCantidadMusicos = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100);           
+               ValuesspCantidadMusicos.setValue(Integer.parseInt(vector[20]));
+               spCantidadMusicos11.setValueFactory(ValuesspCantidadMusicos);
+               tgButtonFactura.setText(vector2[2]);
+               tfFechaCotizacion2.setValue(Empleado.LocalDateStringConverter(vector2[1])); 
                totalFactura.setText(vector[23]);
 
                if(tgButtonFactura.getText().equals("Activa")){               
@@ -611,6 +826,8 @@ public class ContabilidadRegistrosController implements Initializable {
                 }
 
                 horaSerenata2.setLocalTime((Empleado.LocalTimeStringConverter(vector[24])));
+
+
                 
                 
 
@@ -621,7 +838,6 @@ public class ContabilidadRegistrosController implements Initializable {
          }   
 
     }
-
 
     @FXML
     void buscarCotizacionGeneral(ActionEvent event) {

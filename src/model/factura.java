@@ -46,6 +46,31 @@ public class factura {
 
 
 
+    public static String buscarFacturaId(String id){
+    
+        String mostrar = "";
+        String cadenaSQL = "Select  * from factura WHERE FacIdFactura =" + id  ;
+        try {
+            Connect objConexion = new Connect();    
+            Connection conn = objConexion.connect(); // devuelve el objeto conectado a la URL
+            Statement stmt =  conn.createStatement(); // permiten realizar consultas SQL en la B.D.
+    
+            ResultSet resultSet = stmt.executeQuery(cadenaSQL);
+            while (resultSet.next()) {
+              mostrar =   resultSet.getString("FacIdCotizacion") + "," + resultSet.getString("FacFechaFactura") + "," + resultSet.getString("FacEstado") ;
+            }      
+                                  
+            
+            conn.close();
+            stmt.close();
+            System.out.println("Encontrado.");  
+            System.out.println(mostrar);            
+        } catch (Exception e) {
+            System.out.println(e.getMessage()); 
+        }                    
+            return mostrar;
+    }
+
     public void cargaFactura(){
       
           
@@ -70,9 +95,52 @@ public class factura {
     }
 
 
+    public void editarFactura(String id){
+
+      
+        
+      
+        String cadenaSQL = "UPDATE factura  SET FacIdCotizacion = " + idCotizacion +", FacFechaFactura = " +fechaFactura + ", FacEstado = " + estado +" WHERE FacIdFactura = " + id +  ";" ;
+              
+            System.out.println(cadenaSQL);
+            try {
+                Connect objConexion = new Connect();
+        
+                Connection conn = objConexion.connect(); // devuelve el objeto conectado a la URL
+                Statement stmt =  conn.createStatement(); // permiten realizar consultas SQL en la B.D.
+                            
+                stmt.executeUpdate(cadenaSQL); // para insertar datos.
+                conn.close();
+                stmt.close();
+                System.out.println("Guardado.");            
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        
+        }
 
 
+        public  static void eliminarFactura(String id){
 
+
+            String cadenaSQL = "DELETE FROM factura  WHERE FacIdFactura = " + id ;
+              
+            System.out.println(cadenaSQL);
+            try {
+                Connect objConexion = new Connect();
+        
+                Connection conn = objConexion.connect(); // devuelve el objeto conectado a la URL
+                Statement stmt =  conn.createStatement(); // permiten realizar consultas SQL en la B.D.
+                            
+                stmt.executeUpdate(cadenaSQL); // para insertar datos.
+                conn.close();
+                stmt.close();
+                System.out.println("Eliminado.");            
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        
+        }
 
 
 

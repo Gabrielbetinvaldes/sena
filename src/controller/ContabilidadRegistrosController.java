@@ -36,6 +36,7 @@ import javafx.stage.StageStyle;
 import model.Empleado;
 import model.cliente;
 import model.cotizacion;
+import model.factura;
 import model.pdfCliente;
 import model.pdfCotizacion;
 import model.pdfNomina;
@@ -166,7 +167,7 @@ public class ContabilidadRegistrosController implements Initializable {
     private DatePicker tfFechaCotizacion2;
 
     @FXML
-    private TextField tfCliente21;
+    private TextField tfIdFactura;
 
     @FXML
     private TextField tfCotizacion11;
@@ -216,7 +217,23 @@ public class ContabilidadRegistrosController implements Initializable {
     @FXML
     private TextField tfQuien11;
 
-  
+    @FXML
+    private LocalTimePicker horaSerenata2;
+
+    @FXML
+    private TextField transporteFactura;
+
+    @FXML
+    private TextField totalFactura;
+    
+    @FXML
+    private Button ButtonBorraCtz;
+
+    @FXML
+    private Button buttonBuscarFactura;
+
+    @FXML
+    private Button buttonBorrarFactura;
 
 
     @FXML
@@ -229,10 +246,10 @@ public class ContabilidadRegistrosController implements Initializable {
     private TextField tfCostoServicio11;
 
     @FXML
-    private TextField tfSonido11;
+    private TextField tfPreObsequio11;
 
     @FXML
-    private TextField tfPrecioSerenata11;
+    private TextField tfPrecioSonido11;
 
    
     @FXML
@@ -285,6 +302,70 @@ public class ContabilidadRegistrosController implements Initializable {
 
     @FXML
     private Button buttonLimpiarCotizacionG;
+
+
+
+
+    @FXML
+    void crearFactura(ActionEvent event) {
+
+
+
+        String fechaFactura= "'" + tfFechaCotizacion2.getValue() + "'";
+        String idCotizacion = "'" + tfCotizacion11.getText() + "'";           
+        String estado =  "'" + tgButtonFactura.getText() + "'";
+        
+           
+          
+          
+
+           factura ingFactura = new factura (fechaFactura,idCotizacion,estado);
+            
+           ingFactura.cargaFactura(); 
+
+            Alert dialogoAlerta = new Alert(AlertType.CONFIRMATION);
+            dialogoAlerta.setTitle("CREACIÓN DE FACTURA");
+            dialogoAlerta.setHeaderText("Desea crear una nueva factura?");           
+            dialogoAlerta.initStyle(StageStyle.UTILITY);
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            dialogoAlerta.showAndWait();
+
+            Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+            dialogoAlerta1.setTitle("CREACIÓN DE FACTURA");
+            dialogoAlerta1.setHeaderText("Operacion exitosa");           
+            dialogoAlerta1.initStyle(StageStyle.UTILITY);
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            dialogoAlerta1.showAndWait();
+
+
+            tfFechaCotizacion2.setValue(null);        
+            tfNombreCLiente31.clear();
+            tfEmail21.clear();
+            tfWtSapp21.clear();
+            tfTelefonoCliente21.clear();
+            tfTelefonoCliente11.clear();
+            tfBarrio11.clear();
+            tfCiudad21.clear();
+            tfDireccionCliente11.clear();
+            chMotivos11.getSelectionModel().clearSelection(); 
+            tfHomenajeado11.clear();
+            chParentezco11.getSelectionModel().clearSelection(); 
+            tfQuien11.clear();
+            chObsequio11.getSelectionModel().clearSelection(); 
+            tfCostoServicio11.setText("0");
+            tfPrecioSonido11.setText("0");
+            tfPreObsequio11.setText("0");
+            SpinnerValueFactory<Integer> valuesMusicos1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100);           
+            valuesMusicos1.setValue(0);
+            spCantidadMusicos11.setValueFactory(valuesMusicos1);
+            totalFactura.clear();
+            tfCotizacion11.clear();
+            transporteFactura.setText("0");
+            tfIdFactura.setText(factura.idFactura());
+
+           
+
+    }
 
 
     @FXML
@@ -438,6 +519,108 @@ public class ContabilidadRegistrosController implements Initializable {
     }
 
 
+    @FXML
+    void limpiarCotizacionGeneralFactura(ActionEvent event) {
+
+        
+        tfFechaCotizacion2.setValue(null);        
+        tfNombreCLiente31.clear();
+        tfEmail21.clear();
+        tfWtSapp21.clear();
+        tfTelefonoCliente21.clear();
+        tfTelefonoCliente11.clear();
+        tfBarrio11.clear();
+        tfCiudad21.clear();
+        tfDireccionCliente11.clear();
+        chMotivos11.getSelectionModel().clearSelection(); 
+        tfHomenajeado11.clear();
+        chParentezco11.getSelectionModel().clearSelection(); 
+        tfQuien11.clear();
+        chObsequio11.getSelectionModel().clearSelection(); 
+        tfCostoServicio11.setText("0");
+        tfPrecioSonido11.setText("0");
+        tfPreObsequio11.setText("0");
+        SpinnerValueFactory<Integer> valuesMusicos1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100);           
+        valuesMusicos1.setValue(0);
+        spCantidadMusicos11.setValueFactory(valuesMusicos1);
+        totalFactura.clear();
+        tfCotizacion11.clear();
+        transporteFactura.setText("0");
+
+              
+
+    }
+
+
+
+    @FXML
+    void buscarCotizacionGeneralFactura(ActionEvent event) {
+
+
+        String datos;
+        String[] vector;
+         
+        if (tfCotizacion11.getLength() > 0 ){
+
+            datos = cotizacion.buscarCotizacionId(tfCotizacion11.getText());
+            vector = datos.split(",");
+            System.out.println(datos);
+
+            if (datos.equals("")){
+
+                Alert dialogoAlerta = new Alert(AlertType.ERROR);
+                dialogoAlerta.setTitle("ERROR EN LA VALIDACIÓN DE LA COTIZACION");
+                dialogoAlerta.setHeaderText("LA COTIZACION  #" + tfCotizacion11.getText() + " NO EXISTE");
+                dialogoAlerta.setContentText("Validar el numero correcto de la cotizacion");
+                dialogoAlerta.initStyle(StageStyle.UTILITY);
+                java.awt.Toolkit.getDefaultToolkit().beep();
+                dialogoAlerta.showAndWait();
+            }else{     
+                
+                               
+               
+               tfNombreCLiente31.setText(vector[1]);
+               tfEmail21.setText(vector[3]);
+               tfTelefonoCliente11.setText(vector[4]);
+               tfTelefonoCliente21.setText(vector[5]);           
+               tfWtSapp21.setText(vector[6]);
+               tfBarrio11.setText(vector[8]);
+               tfCiudad21.setText(vector[9]);
+               tfDireccionCliente11.setText(vector[10]);
+               chMotivos11.setValue(vector[11]);
+               tfHomenajeado11.setText(vector[12]);
+               chParentezco11.setValue(vector[13]);
+               tfQuien11.setText(vector[14]);
+               chObsequio11.setValue(vector[15]);
+               tfCostoServicio11.setText(vector[16]);
+               tfPrecioSonido11.setText(vector[17]);
+               tfPreObsequio11.setText(vector[18]);
+               transporteFactura.setText(vector[19]);
+               SpinnerValueFactory<Integer> ValuesspCantidadMusicos = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100);           
+               ValuesspCantidadMusicos.setValue(Integer.parseInt(vector[20]));
+               spCantidadMusicos11.setValueFactory(ValuesspCantidadMusicos);
+               tgButtonFactura.setText(vector[21]);
+               tfFechaCotizacion2.setValue(Empleado.LocalDateStringConverter(vector[22])); 
+               totalFactura.setText(vector[23]);
+
+               if(tgButtonFactura.getText().equals("Activa")){               
+                tgButtonFactura.setStyle("-fx-background-color: #008000;");                       
+                                    
+                }else if(tgButtonFactura.getText().equals("Anulada")){
+                    tgButtonFactura.setStyle("-fx-background-color: #ff0000;");                   
+                }
+
+                horaSerenata2.setLocalTime((Empleado.LocalTimeStringConverter(vector[24])));
+                
+                
+
+               
+               
+
+            }                
+         }   
+
+    }
 
 
     @FXML
@@ -964,6 +1147,7 @@ public class ContabilidadRegistrosController implements Initializable {
 
         TxDocIde1.setText(cliente.idCliente()); 
         tfCotizacion1.setText(cotizacion.idCotizacion()); 
+        tfIdFactura.setText(factura.idFactura()); 
 
        
        

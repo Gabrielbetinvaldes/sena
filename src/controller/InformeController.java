@@ -14,6 +14,35 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.reportes;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+
+
+
+
+
+import org.apache.log4j.BasicConfigurator;
+
+
+
+
 
 public class InformeController {
 
@@ -58,6 +87,40 @@ public class InformeController {
 
     @FXML
     private Button btHome40;
+
+    @FXML
+    private Button buscarReporte;
+
+
+
+   
+
+
+
+    @FXML
+    void generarReporte(ActionEvent event) {
+    
+  
+
+      reportes cotizacion = new reportes ();
+         
+      cotizacion.exportarCotizacion();
+
+          
+     
+      
+     
+      
+    }
+    
+
+
+    
+
+      
+      
+
+
 
     @FXML
     void homeUno(ActionEvent event) throws IOException {

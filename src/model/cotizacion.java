@@ -194,7 +194,30 @@ public class cotizacion extends ContabilidadRegistrosController{
 
 
 
-
+    public static String buscarCotizacionExcel(){
+    
+        String mostrar = "";
+        String cadenaSQL = "Select  * from cotizacion"  ;
+        try {
+            Connect objConexion = new Connect();    
+            Connection conn = objConexion.connect(); // devuelve el objeto conectado a la URL
+            Statement stmt =  conn.createStatement(); // permiten realizar consultas SQL en la B.D.
+    
+            ResultSet resultSet = stmt.executeQuery(cadenaSQL);
+            while (resultSet.next()) {
+              mostrar =  resultSet.getString("CliIdClientes") + "," +  resultSet.getString("CliNombres") + "," + resultSet.getString("CliDocIdentidad") + "," +   resultSet.getString("CliEmail") + "," + resultSet.getString("CliTelefonoUno") + "," + resultSet.getString("CliTelefonoDos") + "," +  resultSet.getString("CliWhatSapp") + "," + resultSet.getString("CliReferencias") + "," + resultSet.getString("CotBarrio") + "," + resultSet.getString("CotCiudad") +"," + resultSet.getString("CotDireccion") + "," + resultSet.getString("CotMotivo") + "," + resultSet.getString("CotHomenajeado") + "," + resultSet.getString("CotParentezco") +  "," + resultSet.getString("CotQuienObsequia") +  "," + resultSet.getString("CotObsequio") +  "," + resultSet.getString("CotPrecioVenta") +  "," + resultSet.getString("CotSonido") + "," + resultSet.getString("CotPrecioObsequio") + "," + resultSet.getString("CotTransporte") + "," + resultSet.getString("CotCantidadMusicos") + "," + resultSet.getString("CotEstado") + "," + resultSet.getString("CotFechaCotizacion") + "," + resultSet.getString("CotTotal") + "," + resultSet.getString("CotHora") ;
+            }      
+                                  
+            
+            conn.close();
+            stmt.close();
+            System.out.println("Encontrado.");  
+            System.out.println(mostrar);            
+        } catch (Exception e) {
+            System.out.println(e.getMessage()); 
+        }                    
+            return mostrar;
+    }
 
 
 

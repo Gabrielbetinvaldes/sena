@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch reportes",
+            "request": "launch",
+            "mainClass": "model.reportes",
+            "projectName": "MPM_be060dbe"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"

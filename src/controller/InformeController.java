@@ -36,12 +36,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.util.Timer;
 
-
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 import org.apache.log4j.BasicConfigurator;
 
-
+import javafx.scene.control.Alert;
 
 
 public class InformeController {
@@ -93,6 +95,9 @@ public class InformeController {
     @FXML
     private ToggleGroup tg;
 
+       @FXML
+    private TextField buscar;
+
 
 
 
@@ -101,6 +106,7 @@ public class InformeController {
     
       String fechaIngreso= "'" + dTFechaIni.getValue() + "'";
       String fechaRetiro= "'" + dTFechaFin.getValue() + "'";
+      String dato = "'" + buscar.getText() +  "'" ;
       
         if( rCotizacion.isSelected()){
 
@@ -108,6 +114,137 @@ public class InformeController {
             
           cotizacion.exportarCotizacion(fechaIngreso,fechaRetiro);
   
+          Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+          dialogoAlerta1.setTitle("INFORME");
+          dialogoAlerta1.setHeaderText("Archivo descargado, revisa la carpeta Desktop");           
+          dialogoAlerta1.initStyle(StageStyle.UTILITY);
+          java.awt.Toolkit.getDefaultToolkit().beep();
+          dialogoAlerta1.showAndWait();
+
+        } else if( rFactura.isSelected()){
+
+
+          reportes factura = new reportes ();
+            
+          factura.exportarFactura(fechaIngreso,fechaRetiro);
+  
+          Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+          dialogoAlerta1.setTitle("INFORME");
+          dialogoAlerta1.setHeaderText("Archivo descargado, revisa la carpeta Desktop");           
+          dialogoAlerta1.initStyle(StageStyle.UTILITY);
+          java.awt.Toolkit.getDefaultToolkit().beep();
+          dialogoAlerta1.showAndWait();
+
+
+        }else if (rEmpleados.isSelected()){
+
+          reportes empleados = new reportes ();
+            
+          empleados.exportarEmpleados(fechaIngreso,fechaRetiro);
+
+
+          Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+          dialogoAlerta1.setTitle("INFORME");
+          dialogoAlerta1.setHeaderText("Archivo descargado, revisa la carpeta Desktop");           
+          dialogoAlerta1.initStyle(StageStyle.UTILITY);
+          java.awt.Toolkit.getDefaultToolkit().beep();
+          dialogoAlerta1.showAndWait();
+
+
+
+        } else if(rEmpleadoI.isSelected()){
+
+
+
+          reportes empleados = new reportes ();
+            
+          empleados.exportarEmpleadosIngreso(fechaIngreso,fechaRetiro);
+
+
+          Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+          dialogoAlerta1.setTitle("INFORME");
+          dialogoAlerta1.setHeaderText("Archivo descargado, revisa la carpeta Desktop");           
+          dialogoAlerta1.initStyle(StageStyle.UTILITY);
+          java.awt.Toolkit.getDefaultToolkit().beep();
+          dialogoAlerta1.showAndWait();
+
+
+
+        }else if(rEmpleadosR.isSelected()){
+
+
+
+          reportes empleados = new reportes ();
+            
+          empleados.exportarEmpleadosRetirados(fechaIngreso,fechaRetiro);
+
+
+          Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+          dialogoAlerta1.setTitle("INFORME");
+          dialogoAlerta1.setHeaderText("Archivo descargado, revisa la carpeta Desktop");           
+          dialogoAlerta1.initStyle(StageStyle.UTILITY);
+          java.awt.Toolkit.getDefaultToolkit().beep();
+          dialogoAlerta1.showAndWait();
+
+
+
+        }
+
+        else if(rBarrios.isSelected()){
+
+
+
+        
+          reportes barrios = new reportes ();
+            
+          barrios.exportarFacturaBarrios(fechaIngreso,fechaRetiro, dato);
+
+
+          Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+          dialogoAlerta1.setTitle("INFORME");
+          dialogoAlerta1.setHeaderText("Archivo descargado, revisa la carpeta Desktop");           
+          dialogoAlerta1.initStyle(StageStyle.UTILITY);
+          java.awt.Toolkit.getDefaultToolkit().beep();
+          dialogoAlerta1.showAndWait();
+
+
+
+        }else if(rMotivos.isSelected()){
+
+
+
+        
+          reportes motivos = new reportes ();
+            
+          motivos.exportarFacturaMotivos(fechaIngreso,fechaRetiro, dato);
+
+
+          Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+          dialogoAlerta1.setTitle("INFORME");
+          dialogoAlerta1.setHeaderText("Archivo descargado, revisa la carpeta Desktop");           
+          dialogoAlerta1.initStyle(StageStyle.UTILITY);
+          java.awt.Toolkit.getDefaultToolkit().beep();
+          dialogoAlerta1.showAndWait();
+
+
+
+        }else if(rNomina.isSelected()){
+
+
+
+        
+          reportes nomina = new reportes ();
+            
+          nomina.exportarNomina(fechaIngreso,fechaRetiro);
+
+
+          Alert dialogoAlerta1 = new Alert(AlertType.INFORMATION);
+          dialogoAlerta1.setTitle("INFORME");
+          dialogoAlerta1.setHeaderText("Archivo descargado, revisa la carpeta Desktop");           
+          dialogoAlerta1.initStyle(StageStyle.UTILITY);
+          java.awt.Toolkit.getDefaultToolkit().beep();
+          dialogoAlerta1.showAndWait();
+
 
 
         }

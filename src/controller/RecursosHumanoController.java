@@ -50,11 +50,14 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 public class RecursosHumanoController implements Initializable{
 
+    private String rolUsuario;
+
     @FXML
     private TextField tfCiudad2;
     
   
 
+    
     @FXML
     private ChoiceBox<String> ChEstadoCivil1;
 
@@ -977,6 +980,7 @@ public class RecursosHumanoController implements Initializable{
         Parent root = fxmlLoader.load();
         
         MenuController controlador = fxmlLoader.getController();
+        controlador.setRolUsuario(rolUsuario.toString());
 
         Scene scene = new Scene(root);
         Stage secondaryStage = new Stage();            
@@ -1036,6 +1040,18 @@ public class RecursosHumanoController implements Initializable{
         IdNomina1.setText(nomina.idNomina());           
                
 
+    }
+
+
+    public String getRolUsuario() {
+        return rolUsuario;
+    }
+
+
+
+
+    public void setRolUsuario(String rolUsuario) {
+        this.rolUsuario = rolUsuario;
     }
 
 }

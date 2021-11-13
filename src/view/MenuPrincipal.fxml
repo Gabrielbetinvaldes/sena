@@ -33,12 +33,13 @@
 -->
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="196.0" prefWidth="683.0" style="-fx-background-color: #FCD58D;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="196.0" prefWidth="683.0" style="-fx-background-color: #FCD58D;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
    <children>
       <Button fx:id="RecursosHumanoButton" layoutX="21.0" layoutY="149.0" mnemonicParsing="false" onAction="#RecursosHumano" prefHeight="25.0" prefWidth="201.0" style="-fx-background-color: #F5EFE3;" text="RECURSOS HUMANO" textFill="#68652d">
          <font>
@@ -73,5 +74,6 @@
             <Image url="@imagenes/dashboard.png" />
          </image>
       </ImageView>
+      <Label fx:id="labelRol" layoutX="29.0" layoutY="14.0" />
    </children>
 </Pane>

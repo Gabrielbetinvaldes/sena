@@ -48,6 +48,8 @@ import javafx.scene.control.Alert;
 
 public class InformeController {
 
+  private String rolUsuario;
+
     @FXML
     private DatePicker dTFechaIni;
 
@@ -57,6 +59,17 @@ public class InformeController {
     
     @FXML
     private ProgressBar brProgreso;
+
+  
+
+
+
+
+
+
+
+
+
 
     @FXML
     private Button tfExcel;
@@ -272,6 +285,7 @@ public class InformeController {
         Parent root = fxmlLoader.load();
         
         MenuController controlador = fxmlLoader.getController();
+        controlador.setRolUsuario(rolUsuario.toString());
 
         Scene scene = new Scene(root);
         Stage secondaryStage = new Stage();            
@@ -286,5 +300,24 @@ public class InformeController {
 
 
 
+  }
+
+
+
+  public String getRolUsuario() {
+    return rolUsuario;
+  }
+
+
+
+
+
+
+
+
+
+
+  public void setRolUsuario(String rolUsuario) {
+    this.rolUsuario = rolUsuario;
   }
 }

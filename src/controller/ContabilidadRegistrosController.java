@@ -43,8 +43,14 @@ import model.pdfFactura;
 import model.pdfNomina;
 
 public class ContabilidadRegistrosController implements Initializable {
+
+
+    private String rolUsuario;
+
     @FXML
     private TextField TxNombresCliente1;
+
+  
 
     @FXML
     private TextField TxEmail;
@@ -1365,6 +1371,7 @@ public class ContabilidadRegistrosController implements Initializable {
         Parent root = fxmlLoader.load();
         
         MenuController controlador = fxmlLoader.getController();
+         controlador.setRolUsuario(rolUsuario.toString());
 
         Scene scene = new Scene(root);
         Stage secondaryStage = new Stage();            
@@ -1418,5 +1425,15 @@ public class ContabilidadRegistrosController implements Initializable {
        
     }
 
-    
+    public String getRolUsuario() {
+        return rolUsuario;
+    }
+
+
+
+
+
+    public void setRolUsuario(String rolUsuario) {
+        this.rolUsuario = rolUsuario;
+    }
 }

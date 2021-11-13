@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.usuarios;
 
-public class sesionController   {
+public class sesionController  extends MenuController {
 
     @FXML
     private TextField TextUsuario;
@@ -66,12 +66,18 @@ public class sesionController   {
         if (datos.length() > 0){
 
             if (usuario2.equals(vector[1]) && contrasena2.equals( vector[2]) ){
+
+                
             
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/MenuPrincipal.fxml"));
+                
+
 
                 Parent root = fxmlLoader.load();
                 
                 MenuController controlador = fxmlLoader.getController();
+                controlador.setRolUsuario(vector[3]);
+            
 
                 Scene scene = new Scene(root);
                 Stage secondaryStage = new Stage(); 

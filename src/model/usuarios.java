@@ -7,9 +7,10 @@ import java.sql.Statement;
 
 
 import connection.Connect;
+import controller.MenuController;
 
 
-public class usuarios {
+public class usuarios  {
 
 
     private String usuario;
@@ -39,9 +40,11 @@ public class usuarios {
             ResultSet resultSet = stmt.executeQuery(cadenaSQL);
             while (resultSet.next()) {
               mostrar =   resultSet.getString("UsuNombres") + "," + resultSet.getString("UsuUsuario") + "," + resultSet.getString("Usucontraseña") + "," + resultSet.getString("UsuIdRol");
+              
+            
             }      
                                   
-            
+                
             conn.close();
             stmt.close();
             System.out.println("Encontrado.");  
@@ -50,6 +53,7 @@ public class usuarios {
             System.out.println(e.getMessage()); 
         }                    
             return mostrar;
+            
     }
 
  

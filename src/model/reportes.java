@@ -22,6 +22,7 @@ import model.Empleado;
 import model.cliente;
 import model.cotizacion;
 import model.factura;
+import controller.InformeController;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -39,7 +40,7 @@ public class reportes {
 
 
 
-public  void  exportarCotizacion() {
+public  void  exportarCotizacion(String fechaI, String fechaR) {
 
         String datos;
         String[] vector;
@@ -89,7 +90,7 @@ public  void  exportarCotizacion() {
 
 
         String mostrar = "";
-        String cadenaSQL = "Select  * from clientes INNER JOIN cotizacion ON cotizacion.CotIdCliente = clientes.CliIdClientes " ;
+        String cadenaSQL = "Select  * from clientes INNER JOIN cotizacion ON cotizacion.CotIdCliente = clientes.CliIdClientes  WHERE cotizacion.CotFechaCotizacion >= " + fechaI + " AND cotizacion.CotFechaCotizacion <= " + fechaR ;
         try {
             Connect objConexion = new Connect();    
             Connection conn = objConexion.connect(); // devuelve el objeto conectado a la URL
@@ -134,7 +135,7 @@ public  void  exportarCotizacion() {
 
 
                 index++;
-
+               
 
 
 
